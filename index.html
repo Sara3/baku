@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Baku stops AI support agents from paying out fraudulent refunds, credits and discount codes.">
+<meta name="description" content="Real-time fraud detection for AI support agents. Baku streams every conversation, links attempts across sessions, and stops the payout before money moves.">
 <meta property="og:title" content="Baku">
-<meta property="og:description" content="Your AI agent gives refunds. Scammers know. Baku stops fraudulent payouts before money moves.">
+<meta property="og:description" content="Real-time fraud detection for AI support agents.">
 <meta property="og:type" content="website">
 <style>html{color-scheme:light}body{margin:0}[hidden]{display:none!important}</style>
 </head>
@@ -60,7 +60,7 @@ a{color:inherit}
 @media (max-width:880px){.hero .wrap{grid-template-columns:1fr;gap:40px;padding-block:32px 64px}}
 h1{font-family:var(--display);font-weight:400;font-size:clamp(44px,6.4vw,76px);line-height:1;letter-spacing:-.015em;text-wrap:balance}
 h1 em{color:var(--green)}
-.sub{margin-top:22px;font-size:19px;color:var(--soft);max-width:34ch}
+.sub{margin-top:22px;font-size:19px;color:var(--soft);max-width:40ch}
 .btn{display:inline-flex;align-items:center;font:600 15px/1 var(--body);padding:15px 24px;border-radius:100px;border:0;cursor:pointer;text-decoration:none;transition:transform .15s ease,background .15s ease}
 .btn-go{background:var(--green);color:var(--btn-fg);margin-top:30px}
 .btn-go:hover{background:var(--green-deep);transform:translateY(-1px)}
@@ -75,11 +75,11 @@ h1 em{color:var(--green)}
 .ok{background:#17392E;color:#8FDDB7}.hold{background:#3A2A12;color:#F0B86A}.no{background:#3F1F18;color:#F09A86}
 @media (prefers-reduced-motion:no-preference){.call{animation:in .5s ease both}.call:nth-child(3){animation-delay:.12s}.call:nth-child(4){animation-delay:.24s}@keyframes in{from{opacity:.4;transform:translateY(6px)}}}
 
-.three .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-block:0 88px}
-@media (max-width:720px){.three .wrap{grid-template-columns:1fr}}
-.three div{border-top:1px solid var(--line);padding-top:16px;display:grid;gap:4px}
+.three .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;padding-block:8px 96px}
+@media (max-width:720px){.three .wrap{grid-template-columns:1fr;gap:28px}}
+.three div{border-top:1px solid var(--line);padding-top:20px;display:grid;gap:8px;align-content:start}
 .three b{font-family:var(--display);font-weight:400;font-size:28px;line-height:1.1}
-.three p{color:var(--soft);font-size:15px}
+.three p{color:var(--soft);font-size:15.5px;max-width:30ch}
 
 .talk{background:#132238;color:#F4F1E8}
 .talk .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding-block:72px}
@@ -112,8 +112,8 @@ footer .wrap{padding-block:28px;font-size:13px;color:var(--muted);display:flex;f
   <section class="hero">
     <div class="wrap">
       <div>
-        <h1>Your AI agent gives refunds.<br><em>Scammers know.</em></h1>
-        <p class="sub">Baku stops fraudulent refunds, credits and codes before money moves.</p>
+        <h1>Real-time fraud detection for <em>AI support agents.</em></h1>
+        <p class="sub">Baku sits at the refund call. It streams every conversation, links attempts across sessions, and stops the payout before money moves.</p>
         <a class="btn btn-go" href="#talk">Get a free test</a>
       </div>
       <div class="feed" aria-label="Example: Baku checking refunds from an AI support agent">
@@ -127,9 +127,9 @@ footer .wrap{padding-block:28px;font-size:13px;color:var(--muted);display:flex;f
 
   <section class="three">
     <div class="wrap">
-      <div><b>Checks</b><p>every payout your agent makes.</p></div>
-      <div><b>Links</b><p>many chats to one fraud ring.</p></div>
-      <div><b>Learns</b><p>new rules from each attack.</p></div>
+      <div><b>Real time</b><p>Every refund, credit and code is checked before it pays out.</p></div>
+      <div><b>Streaming</b><p>Live conversations are linked across sessions into one fraud ring.</p></div>
+      <div><b>Learning</b><p>Our agents write new rules from every attack.</p></div>
     </div>
   </section>
 
