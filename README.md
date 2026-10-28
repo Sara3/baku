@@ -1,6 +1,6 @@
 # Baku landing page
 
-Static one-page site for Baku: fraud detection for AI support agents.
+Baku stops AI support agents from paying out fraudulent refunds, credits and codes.
 
 | File | Purpose |
 |---|---|
