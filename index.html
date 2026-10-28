@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Baku checks every refund, credit and code your AI support agent hands out, and stops fraud before money moves.">
+<meta property="og:title" content="Baku: fraud detection for AI support agents">
+<meta property="og:description" content="Your support agent can refund anyone. Baku decides who.">
+<meta property="og:type" content="website">
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Baku</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: paper page, one quiet column (max 1120px), deep-ink bands for the hero mock and the sales close. Grail's bones: serif display, calm, no gradients. */
+:root{
+  --paper:#FBFAF6; --surface:#FFFFFF; --surface-2:#F3F1EA; --line:#E6E2D6; --line-soft:#F0EDE3;
+  --ink:#132238; --ink-2:#2B3A50; --text-soft:#5E6878; --text-muted:#9AA3B0;
+  --green:#1F7A5C; --green-deep:#165C45; --mint:#7FCBA6; --mint-wash:#E6F3EC;
+  --amber:#B8721F; --amber-wash:#FBF0DC; --red:#B9472E; --red-wash:#F9E6E1;
+  --on-ink:#F4F1E8; --on-ink-soft:#B9C1CE; --ink-raise:#1B2D47; --ink-line:#2E4160;
+  --shadow:0 1px 2px rgba(19,34,56,.06),0 12px 32px rgba(19,34,56,.08);
+  --display:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --body:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r-sm:10px; --r-md:16px; --r-lg:24px; --r-full:100px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#0F1826; --surface:#152237; --surface-2:#1B2A42; --line:#2A3B55; --line-soft:#223249;
+  --ink:#F1EEE6; --ink-2:#D9D4C7; --text-soft:#AEB6C3; --text-muted:#75808F;
+  --green:#5EC79A; --green-deep:#7FD7B0; --mint:#7FCBA6; --mint-wash:#17392E;
+  --amber:#E2A24C; --amber-wash:#3A2A12; --red:#E4826B; --red-wash:#3F1F18;
+  --on-ink:#F4F1E8; --on-ink-soft:#B9C1CE; --ink-raise:#0B121D; --ink-line:#22314A;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.35);
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#0F1826; --surface:#152237; --surface-2:#1B2A42; --line:#2A3B55; --line-soft:#223249;
+  --ink:#F1EEE6; --ink-2:#D9D4C7; --text-soft:#AEB6C3; --text-muted:#75808F;
+  --green:#5EC79A; --green-deep:#7FD7B0; --mint:#7FCBA6; --mint-wash:#17392E;
+  --amber:#E2A24C; --amber-wash:#3A2A12; --red:#E4826B; --red-wash:#3F1F18;
+  --on-ink:#F4F1E8; --on-ink-soft:#B9C1CE; --ink-raise:#0B121D; --ink-line:#22314A;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 32px rgba(0,0,0,.35);
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.6;font-size:16px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:inherit}
+img,svg{max-width:100%}
+.wrap{max-width:1120px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.05;letter-spacing:-.01em;text-wrap:balance}
+h1{font-size:clamp(40px,6vw,68px)}
+h2{font-size:clamp(32px,4.2vw,48px)}
+h3{font-size:24px}
+.eyebrow{font-family:var(--body);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
+p.lead{font-size:19px;color:var(--text-soft);max-width:58ch}
+.muted{color:var(--text-soft)}
+.num{font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-weight:600;font-size:15px;padding:13px 22px;border-radius:var(--r-full);border:1px solid transparent;cursor:pointer;text-decoration:none;transition:transform .15s ease,background .15s ease}
+.btn:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible{outline:3px solid var(--mint);outline-offset:2px}
+.btn-primary{background:var(--green);color:#fff}
+.btn-primary:hover{background:var(--green-deep);transform:translateY(-1px)}
+:root[data-theme="dark"] .btn-primary,:root:not([data-theme="light"]) .btn-primary{color:#0F1826}
+@media (prefers-color-scheme: light){ :root:not([data-theme="dark"]) .btn-primary{color:#fff} }
+:root[data-theme="light"] .btn-primary{color:#fff}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover{background:var(--surface-2)}
+.btn-onink{background:var(--mint);color:#0F1826}
+.btn-onink:hover{background:#9ad9bb}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand .mark{width:32px;height:32px;border-radius:9px;background:var(--ink);display:grid;place-items:center}
+.brand .word{font-family:var(--display);font-size:26px;letter-spacing:-.01em;line-height:1}
+.nav-links{display:flex;gap:22px;align-items:center;font-size:15px;color:var(--text-soft)}
+.nav-links a{text-decoration:none}
+.nav-links a:hover{color:var(--ink)}
+@media (max-width:720px){.nav-links a.hide-sm{display:none}}
+
+/* hero */
+.hero{padding-block:72px 48px}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:36px}}
+.hero h1 em{font-style:italic;color:var(--green)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero .trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font-size:13.5px;color:var(--text-soft)}
+.hero .trust span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:8px;vertical-align:middle}
+
+/* decision feed mock */
+.feed{background:var(--ink);color:var(--on-ink);border-radius:var(--r-lg);padding:20px;box-shadow:var(--shadow);min-width:0}
+.feed-head{display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--on-ink-soft);padding-bottom:12px;border-bottom:1px solid var(--ink-line)}
+.feed-head .live{display:inline-flex;align-items:center;gap:6px}
+.feed-head .live i{width:7px;height:7px;border-radius:50%;background:var(--mint);display:inline-block}
+.calls{display:grid;gap:10px;margin-top:14px}
+.call{background:var(--ink-raise);border:1px solid var(--ink-line);border-radius:var(--r-md);padding:14px 14px 12px;display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:start}
+.call .tool{font-family:var(--mono);font-size:12.5px;color:var(--on-ink-soft);word-break:break-word}
+.call .tool b{color:var(--on-ink);font-weight:500}
+.call .why{grid-column:1 / -1;font-size:13.5px;color:var(--on-ink-soft);line-height:1.45}
+.call .why strong{color:var(--on-ink);font-weight:500}
+.pill{font-family:var(--body);font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:var(--r-full);white-space:nowrap}
+.pill.allow{background:#17392E;color:#8FDDB7}
+.pill.step{background:#3A2A12;color:#F0B86A}
+.pill.deny{background:#3F1F18;color:#F09A86}
+.feed-foot{margin-top:12px;font-size:12.5px;color:var(--on-ink-soft)}
+@media (prefers-reduced-motion:no-preference){
+  .call{animation:rise .5s ease both}
+  .call:nth-child(2){animation-delay:.15s}.call:nth-child(3){animation-delay:.3s}
+  @keyframes rise{from{opacity:.35;transform:translateY(6px)}to{opacity:1;transform:none}}
+}
+
+/* sections */
+section{padding-block:72px}
+section.alt{background:var(--surface-2)}
+.sec-head{max-width:720px;margin-bottom:36px;display:grid;gap:12px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media (max-width:860px){.grid-3{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;min-width:0;display:grid;gap:10px;align-content:start}
+.card h3{font-size:26px}
+.card p{color:var(--text-soft);font-size:15px}
+.card .k{font-family:var(--mono);font-size:12px;color:var(--text-muted);letter-spacing:.04em}
+
+/* stakes */
+.stat{display:grid;gap:6px;padding:22px 0;border-top:1px solid var(--line)}
+.stat .big{font-family:var(--display);font-size:clamp(40px,5vw,56px);line-height:1;color:var(--ink)}
+.stat .big small{font-size:.5em;color:var(--green)}
+.stat .what{font-size:15px;color:var(--ink-2)}
+.stat .src{font-size:12.5px;color:var(--text-muted)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+@media (max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.stats{grid-template-columns:1fr}}
+
+/* diagram */
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:20px;overflow-x:auto;margin-bottom:28px}
+.diagram svg{display:block;width:100%;height:auto;min-width:640px}
+
+/* week */
+.week{display:grid;gap:14px}
+.day{display:grid;grid-template-columns:110px 1fr auto;gap:16px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:18px 20px;min-width:0}
+.day .d{font-family:var(--mono);font-size:12.5px;color:var(--text-muted)}
+.day .t{font-size:15.5px}
+.day .t b{font-weight:600}
+.day .t small{display:block;color:var(--text-soft);font-size:14px;margin-top:2px}
+.tag{font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:var(--r-full);white-space:nowrap}
+.tag.allow{background:var(--mint-wash);color:var(--green)}
+.tag.step{background:var(--amber-wash);color:var(--amber)}
+.tag.deny{background:var(--red-wash);color:var(--red)}
+@media (max-width:640px){.day{grid-template-columns:1fr;gap:8px}}
+
+/* faq */
+.faq{display:grid;gap:0;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line);padding:18px 0}
+.faq summary{cursor:pointer;font-family:var(--display);font-size:22px;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--body);color:var(--text-muted);font-size:22px;flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin-top:10px;color:var(--text-soft);max-width:70ch}
+
+/* sales band */
+.sales{background:var(--ink);color:var(--on-ink);padding-block:80px}
+.sales .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+@media (max-width:900px){.sales .wrap{grid-template-columns:1fr}}
+.sales h2{color:var(--on-ink)}
+.sales .lead{color:var(--on-ink-soft)}
+.sales .eyebrow{color:var(--mint)}
+.sales ul{list-style:none;display:grid;gap:10px;margin-top:22px;color:var(--on-ink-soft);font-size:15px}
+.sales li::before{content:"→";color:var(--mint);margin-right:10px}
+.form{background:var(--ink-raise);border:1px solid var(--ink-line);border-radius:var(--r-lg);padding:24px;display:grid;gap:14px;min-width:0}
+.field{display:grid;gap:6px}
+.field label{font-size:13px;font-weight:500;color:var(--on-ink-soft)}
+.field input,.field select,.field textarea{font:inherit;font-size:15px;color:var(--on-ink);background:var(--ink);border:1px solid var(--ink-line);border-radius:var(--r-sm);padding:11px 12px;width:100%;min-width:0}
+.field textarea{min-height:88px;resize:vertical}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:520px){.row2{grid-template-columns:1fr}}
+.form .actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:4px}
+.form .note{font-size:12.5px;color:var(--on-ink-soft)}
+.addr{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:18px;font-family:var(--mono);font-size:14px;color:var(--on-ink)}
+.addr button{font:inherit;font-size:12.5px;background:transparent;color:var(--mint);border:1px solid var(--ink-line);border-radius:var(--r-full);padding:5px 12px;cursor:pointer}
+.addr button:hover{background:var(--ink)}
+.sent{background:#17392E;color:#C9EEDC;border-radius:var(--r-sm);padding:12px 14px;font-size:14px;line-height:1.5}
+.sent pre{font-family:var(--mono);font-size:12.5px;white-space:pre-wrap;word-break:break-word;margin-top:8px;color:#E8F7EF}
+
+/* footer */
+footer{padding-block:36px 48px;font-size:13px;color:var(--text-muted)}
+footer .wrap{display:grid;gap:14px}
+footer .links{display:flex;flex-wrap:wrap;gap:8px 20px}
+footer a{color:var(--text-soft);text-decoration:none}
+footer a:hover{color:var(--ink)}
+footer .fine{max-width:80ch}
+</style>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Baku home">
+      <span class="mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 20 20"><path d="M3 10h14M10 3v14" stroke="#7FCBA6" stroke-width="2.2" stroke-linecap="round"/><circle cx="10" cy="10" r="3.2" fill="#132238" stroke="#7FCBA6" stroke-width="2.2"/></svg></span>
+      <span class="word">Baku</span>
+    </a>
+    <nav class="nav-links" aria-label="Page">
+      <a class="hide-sm" href="#how">How it works</a>
+      <a class="hide-sm" href="#who">Who it's for</a>
+      <a class="hide-sm" href="#faq">Questions</a>
+      <a class="btn btn-primary" href="#sales">Talk to sales</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Fraud detection for AI support agents</p>
+      <h1 style="margin-top:14px">Your support agent can refund anyone.<br><em>Baku decides who.</em></h1>
+      <p class="lead" style="margin-top:20px">Baku checks every refund, credit and code your AI agent hands out, and stops fraud before money moves.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#sales">Request a free concession test</a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
+      </div>
+      <div class="trust">
+        <span>Gorgias, Zendesk, Intercom, your own agents</span>
+        <span>Read-only Shopify</span>
+        <span>Your agent stays as it is</span>
+      </div>
+    </div>
+
+    <div class="feed" aria-label="Example of Baku decisions on an AI support agent">
+      <div class="feed-head">
+        <span class="live"><i></i> refund desk · live</span>
+        <span>example traffic</span>
+      </div>
+      <div class="calls">
+        <div class="call">
+          <div class="tool"><b>refund.create</b> order #48213 · $64.00</div>
+          <span class="pill allow">Allowed · 38 ms</span>
+          <div class="why">Never shipped. First refund in 14 months.</div>
+        </div>
+        <div class="call">
+          <div class="tool"><b>refund.create</b> order #48197 · $184.00</div>
+          <span class="pill step">Step up · human</span>
+          <div class="why">Delivered 2 days ago. Address changed. Story changed.</div>
+        </div>
+        <div class="call">
+          <div class="tool"><b>discount.apply</b> code probe · 1,412 attempts</div>
+          <span class="pill deny">Denied · fleet</span>
+          <div class="why">36 sessions, one device cluster, 40 minutes.</div>
+        </div>
+      </div>
+      <div class="feed-foot">Three calls from one morning.</div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="stakes">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Why now</p>
+      <h2>Every new way to pay is a new way to steal.</h2>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="big num">41<small>%</small></div><div class="what">of merchants: refund abuse is now their #1 fraud.</div><div class="src">Merchant Risk Council, 2026 global survey</div></div>
+      <div class="stat"><div class="big num">~50<small>%</small></div><div class="what">of consumers have used AI to write a refund claim.</div><div class="src">Riskified consumer research, 2026</div></div>
+      <div class="stat"><div class="big num">10,000<small>/hr</small></div><div class="what">fake returns one script can push through.</div><div class="src">Palo Alto Networks Unit 42, 2026</div></div>
+      <div class="stat"><div class="big">“solely<br>responsible”</div><div class="what">is what AI support contracts say about you.</div><div class="src">Gorgias, Intercom, Zendesk, Ada terms, 2026</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">How it works</p>
+      <h2>Every attack crosses your trust boundary. Baku sits on it.</h2>
+      <p class="lead">Scammers, hijacked agents and bot fleets all end the same way: a refund, credit or code call. Baku checks that call.</p>
+    </div>
+
+    <div class="diagram" role="img" aria-label="Diagram: scammy customers, hijacked agents and bot fleets reach the AI support agent; every money-moving call crosses the trust boundary where Baku enforces, correlates and learns; only safe refunds, credits and codes reach the merchant's systems.">
+      <svg viewBox="0 0 1040 300" xmlns="http://www.w3.org/2000/svg">
+        <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--text-muted)"/></marker></defs>
+        <g font-family="IBM Plex Sans, sans-serif" font-size="13">
+          <text x="20" y="28" fill="var(--text-muted)" font-size="11" letter-spacing="1.5">UNTRUSTED SIDE</text>
+          <rect x="20" y="44" width="200" height="48" rx="12" fill="var(--surface-2)" stroke="var(--line)"/><text x="120" y="73" text-anchor="middle" fill="var(--ink)">Scammy customers</text>
+          <rect x="20" y="108" width="200" height="48" rx="12" fill="var(--surface-2)" stroke="var(--line)"/><text x="120" y="137" text-anchor="middle" fill="var(--ink)">Hijacked agents</text>
+          <rect x="20" y="172" width="200" height="48" rx="12" fill="var(--surface-2)" stroke="var(--line)"/><text x="120" y="201" text-anchor="middle" fill="var(--ink)">Bot fleets</text>
+          <path d="M220 68 H270 V132 H300" fill="none" stroke="var(--text-muted)" stroke-width="1.5"/>
+          <path d="M220 132 H300" fill="none" stroke="var(--text-muted)" stroke-width="1.5"/>
+          <path d="M220 196 H270 V132" fill="none" stroke="var(--text-muted)" stroke-width="1.5"/>
+          <rect x="300" y="96" width="190" height="72" rx="14" fill="var(--surface)" stroke="var(--line)"/>
+          <text x="395" y="126" text-anchor="middle" fill="var(--ink)" font-weight="600">AI support agent</text>
+          <text x="395" y="146" text-anchor="middle" fill="var(--text-soft)" font-size="12">Gorgias · Zendesk · your own</text>
+          <path d="M490 132 H560" fill="none" stroke="var(--text-muted)" stroke-width="1.5" marker-end="url(#arr)"/>
+          <text x="525" y="118" text-anchor="middle" fill="var(--text-muted)" font-size="11">refund · credit · code</text>
+          <line x1="600" y1="20" x2="600" y2="280" stroke="var(--green)" stroke-width="2" stroke-dasharray="6 6"/>
+          <text x="600" y="296" text-anchor="middle" fill="var(--green)" font-size="11" letter-spacing="1.5">TRUST BOUNDARY</text>
+          <rect x="565" y="62" width="200" height="140" rx="18" fill="var(--ink)"/>
+          <text x="665" y="92" text-anchor="middle" fill="#F4F1E8" font-family="Instrument Serif, Georgia, serif" font-size="26">Baku</text>
+          <text x="665" y="122" text-anchor="middle" fill="#7FCBA6" font-size="13">Enforce</text>
+          <text x="665" y="146" text-anchor="middle" fill="#7FCBA6" font-size="13">Correlate</text>
+          <text x="665" y="170" text-anchor="middle" fill="#7FCBA6" font-size="13">Learn</text>
+          <path d="M765 132 H830" fill="none" stroke="var(--green)" stroke-width="2" marker-end="url(#arr)"/>
+          <text x="930" y="28" text-anchor="middle" fill="var(--text-muted)" font-size="11" letter-spacing="1.5">MERCHANT SYSTEMS</text>
+          <rect x="840" y="96" width="180" height="72" rx="14" fill="var(--mint-wash)" stroke="var(--green)"/>
+          <text x="930" y="124" text-anchor="middle" fill="var(--ink)" font-weight="600">Only safe refunds,</text>
+          <text x="930" y="144" text-anchor="middle" fill="var(--ink)" font-weight="600">credits and codes</text>
+          <text x="930" y="190" text-anchor="middle" fill="var(--text-soft)" font-size="12">Shopify · your OMS</text>
+          <path d="M665 202 V240 H400 V168" fill="none" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="3 5" marker-end="url(#arr)"/>
+          <text x="530" y="256" text-anchor="middle" fill="var(--text-muted)" font-size="11">blocked, stepped up or throttled, sent back</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <span class="k">01 · ENFORCE</span>
+        <h3>Allow, step up or deny, before the money moves.</h3>
+        <p>Each call is checked against the order, refund history, account age and the conversation. In milliseconds.</p>
+      </div>
+      <div class="card">
+        <span class="k">02 · CORRELATE</span>
+        <h3>Many sessions, one operator.</h3>
+        <p>Code enumeration and refund drains are linked into one fleet. Works on your own traffic from day one.</p>
+      </div>
+      <div class="card">
+        <span class="k">03 · LEARN</span>
+        <h3>Every attack makes it smarter.</h3>
+        <p>An investigator agent writes rules from your attacks, backtests them, and a human approves each one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="deploy">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Deployment</p>
+      <h2>Runs wherever your agent runs.</h2>
+      <p class="lead">Prompts, tools and vendor stay the same.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <span class="k">YOU RUN THE AGENT</span>
+        <h3>Sidecar or library.</h3>
+        <p>Beside OpenAI, Claude or Google ADK agents. One check before the action.</p>
+      </div>
+      <div class="card">
+        <span class="k">A PLATFORM RUNS IT</span>
+        <h3>Proxy in front of your tool endpoint.</h3>
+        <p>Gorgias, Zendesk, Intercom, Ada. Only approved calls get through.</p>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:18px;font-size:14px">Read-only Shopify Admin API and refund webhooks. Encrypted. Never sold.</p>
+  </div>
+</section>
+
+<section id="who">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Who it's for</p>
+      <h2>Shopify brands first. Then every agent that moves money.</h2>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="k">NOW</span>
+        <h3>Shopify brands on AI support.</h3>
+        <p>Your agent refunds. You own the loss.</p>
+      </div>
+      <div class="card">
+        <span class="k">NEXT</span>
+        <h3>Merchants with their own agents.</h3>
+        <p>Real authority, no fraud team.</p>
+      </div>
+      <div class="card">
+        <span class="k">LATER</span>
+        <h3>Fintech and insurance support.</h3>
+        <p>Payouts and account changes. Same boundary.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="week">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">A week with Baku</p>
+      <h2>A week with Baku.</h2>
+      <p class="lead">Illustrative. The free test shows you yours.</p>
+    </div>
+    <div class="week">
+      <div class="day"><span class="d">Monday</span><div class="t"><b>212 refund calls, 209 allowed</b><small>Median 41 ms.</small></div><span class="tag allow">allowed</span></div>
+      <div class="day"><span class="d">Wednesday</span><div class="t"><b>1,412 code attempts from 36 sessions</b><small>One operator. Blocked.</small></div><span class="tag deny">denied</span></div>
+      <div class="day"><span class="d">Thursday</span><div class="t"><b>$184 refund on a delivered order</b><small>Stepped up. Reviewer declined in 3 minutes.</small></div><span class="tag step">step up</span></div>
+      <div class="day"><span class="d">Friday</span><div class="t"><b>New rule: delivered under 72 h and address changed</b><small>Backtest: 14 caught, 0 wrong. Approved.</small></div><span class="tag allow">rule approved</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Questions</p>
+      <h2>A few things to know.</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Does Baku change what my agent says or does?</summary><p>No. Same prompts, tools and vendor. Baku only answers allow, step up or deny.</p></details>
+      <details><summary>What does it need access to?</summary><p>Read-only Shopify access and your support platform's ticket API.</p></details>
+      <details><summary>What if Baku is wrong?</summary><p>Uncertain calls go to a human, never a silent denial. You set the thresholds.</p></details>
+      <details><summary>What is a free concession test?</summary><p>About a week. We run our attack pack against a sandbox copy of your agent and show what it would have paid out. No production access.</p></details>
+      <details><summary>What does it cost?</summary><p>Design partners run free. Paid plans are quoted after the test.</p></details>
+      <details><summary>Who is behind Baku?</summary><p>Sara Daqiq (ex-Uber, ex-Okta) and Yifei Liu (ex-TikTok fraud, Vectra AI). San Francisco.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sales" id="sales">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Talk to sales</p>
+      <h2 style="margin-top:12px">See what your agent would have paid out.</h2>
+      <p class="lead" style="margin-top:16px">We reply within one business day.</p>
+      <ul>
+        <li>Free test, about a week</li>
+        <li>No production access</li>
+        <li>Design partners run free</li>
+      </ul>
+      <div class="addr">
+        <span id="salesEmail">daqiq.sara@gmail.com</span>
+        <button type="button" id="copyEmail">Copy email</button>
+      </div>
+    </div>
+
+    <form class="form" id="salesForm" novalidate>
+      <div class="row2">
+        <div class="field"><label for="fName">Your name</label><input id="fName" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="fCompany">Company</label><input id="fCompany" name="company" autocomplete="organization" required></div>
+      </div>
+      <div class="field"><label for="fEmail">Work email</label><input id="fEmail" name="email" type="email" autocomplete="email" required></div>
+      <div class="row2">
+        <div class="field"><label for="fPlatform">Where does your support agent run?</label>
+          <select id="fPlatform" name="platform">
+            <option>Gorgias</option><option>Zendesk</option><option>Intercom Fin</option><option>Ada</option><option>Sierra or Decagon</option><option>We built our own</option><option>Not sure yet</option>
+          </select></div>
+        <div class="field"><label for="fVolume">Refunds per month (rough)</label>
+          <select id="fVolume" name="volume">
+            <option>Under 500</option><option>500 to 2,000</option><option>2,000 to 10,000</option><option>Over 10,000</option>
+          </select></div>
+      </div>
+      <div class="field"><label for="fMsg">Anything we should know? (optional)</label><textarea id="fMsg" name="message" placeholder="What your agent can do today."></textarea></div>
+      <div class="actions">
+        <button class="btn btn-onink" type="submit">Request the free test</button>
+        <button class="btn btn-ghost" type="button" id="copyReq" style="color:var(--on-ink);border-color:var(--ink-line)">Copy my request</button>
+      </div>
+      <p class="note">Opens your email app. If not, copy the request and paste it to the address on the left.</p>
+      <div class="sent" id="sentBox" hidden></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand" style="color:var(--ink)"><span class="word" style="font-size:22px">Baku</span><span class="muted" style="font-size:13px">· fraud detection for AI support agents · San Francisco</span></div>
+    <div class="links">
+      <a href="#how">How it works</a><a href="#who">Who it's for</a><a href="#faq">Questions</a><a href="#sales">Talk to sales</a>
+    </div>
+    <p class="fine">Baku is not affiliated with Shopify, Gorgias, Zendesk, Intercom or Ada. The feed and weekly figures are examples, not customer data.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var email = document.getElementById('salesEmail').textContent.trim();
+  var form = document.getElementById('salesForm');
+  var sent = document.getElementById('sentBox');
+  function val(id){ return (document.getElementById(id).value || '').trim(); }
+  function buildRequest(){
+    return [
+      'Free concession test request',
+      '',
+      'Name: ' + val('fName'),
+      'Company: ' + val('fCompany'),
+      'Work email: ' + val('fEmail'),
+      'Support platform: ' + val('fPlatform'),
+      'Refunds per month: ' + val('fVolume'),
+      '',
+      'Notes: ' + (val('fMsg') || '(none)')
+    ].join('\n');
+  }
+  function missing(){
+    var m = [];
+    if(!val('fName')) m.push('your name');
+    if(!val('fCompany')) m.push('company');
+    var e = val('fEmail'); if(!e || e.indexOf('@') < 1) m.push('a valid work email');
+    return m;
+  }
+  function show(html){ sent.innerHTML = html; sent.hidden = false; sent.scrollIntoView({block:'nearest'}); }
+  function copyText(text, onOk, onFail){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(onOk, onFail);
+    } else { onFail(); }
+  }
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var m = missing();
+    if(m.length){ show('Please add ' + m.join(', ') + ' so we can get back to you.'); return; }
+    var body = buildRequest();
+    var subject = 'Baku: free concession test for ' + val('fCompany');
+    var href = 'mailto:' + email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    show('Your email app should open with the request below. If it did not, copy it and send it to <b>' + email + '</b>.<pre>' + body.replace(/</g,'&lt;') + '</pre>');
+    try { window.location.href = href; } catch(e) {}
+  });
+  document.getElementById('copyReq').addEventListener('click', function(){
+    var body = buildRequest();
+    copyText(body, function(){ show('Copied. Paste it into an email to <b>' + email + '</b>.<pre>' + body.replace(/</g,'&lt;') + '</pre>'); },
+                   function(){ show('Select and copy the request below, then email it to <b>' + email + '</b>.<pre>' + body.replace(/</g,'&lt;') + '</pre>'); });
+  });
+  document.getElementById('copyEmail').addEventListener('click', function(){
+    var btn = this;
+    copyText(email, function(){ btn.textContent = 'Copied'; setTimeout(function(){ btn.textContent = 'Copy email'; }, 1600); },
+                    function(){ var r = document.createRange(); r.selectNodeContents(document.getElementById('salesEmail')); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); });
+  });
+})();
+</script>
+
+</body>
+</html>
