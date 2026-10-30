@@ -113,7 +113,7 @@ h1 span{color:var(--soft)}
 
 /* interactive demo: a Shopify-style store with an AI support chat, then Baku's view */
 .demo{margin-top:56px;margin-bottom:-1px;border:1px solid var(--line-2);border-bottom:0;border-radius:16px 16px 0 0;background:linear-gradient(180deg,var(--panel),var(--bg-2));box-shadow:0 -20px 80px -30px rgba(142,197,255,.25);padding:14px;min-width:0}
-.steps-nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.steps-nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
 .sn{all:unset;cursor:pointer;display:grid;gap:7px;padding:4px 2px 8px;font:500 12.5px var(--sans);color:var(--muted);min-width:0}
 .sn i{display:block;height:3px;border-radius:3px;background:var(--line-2);overflow:hidden}
 .sn i b{display:block;height:100%;width:0;background:var(--ice)}
@@ -190,7 +190,7 @@ h1 span{color:var(--soft)}
 .bkh b{font:600 14px var(--sans);color:var(--fg)}
 .bkh .live{margin-left:auto}
 .bkb{flex:1;padding:16px;overflow:hidden;display:flex;flex-direction:column;gap:12px}
-.dr{display:grid;grid-template-columns:70px minmax(0,1fr) auto;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--line);font-size:13px;animation:pop .25s ease both}
+.dr{display:grid;grid-template-columns:54px 62px minmax(0,1fr) auto;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--line);font-size:13px;animation:pop .25s ease both}
 .dr:first-child{border-top:0}
 .dr .w b{display:block;font-weight:500}
 .dr .w span{display:block;font:11.5px var(--mono);color:var(--muted)}
@@ -252,7 +252,22 @@ h1 span{color:var(--soft)}
 .rcpt b{font-weight:600}
 .skip{align-self:center;font:11px var(--mono);color:#9b958c;background:#F1EEE9;border-radius:999px;padding:3px 10px}
 .demo .note a{color:var(--soft)}
-@media (max-width:640px){.sc{padding:10px 12px;gap:3px}.sc b{font-size:22px}.sc .sub{white-space:normal;font-size:12px}.sc .tag{font-size:10px;letter-spacing:.08em}.sc .now{display:none}.cover{padding:16px}.cover b{font-size:17px}}
+.dr time{font:11px var(--mono);color:var(--muted)}
+.v.blk{background:var(--bad-bg);color:var(--bad)}
+.sys{align-self:center;max-width:100%;font:11px var(--mono);color:#6b655d;background:#F1EEE9;border-radius:999px;padding:3px 10px;text-align:center;animation:pop .22s ease both}
+.sys b{color:#9A2E22;font-weight:600}.sys b.ok{color:#1d5c3b}.sys b.hold{color:#9A6A12}
+#bkt{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rcpt.blk{background:#1d1b18;border-color:#1d1b18;color:#fff}
+.ilog{display:grid;gap:9px;align-content:center}
+.ilog div{font:12.5px/1.5 var(--sans);color:var(--soft);animation:pop .3s ease both;display:grid;grid-template-columns:54px minmax(0,1fr);gap:8px}
+.ilog time{font:11px var(--mono);color:var(--muted);padding-top:2px}
+.ilog b{color:var(--fg);font-weight:500}
+.ilog .ok b{color:var(--ok)}
+.opt{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+.bkh .clk{margin-left:auto;font:12px var(--mono);color:var(--soft);font-variant-numeric:tabular-nums}
+.bkh .live{margin-left:12px}
+.cover small{font-size:12.5px;color:var(--soft)}
+@media (max-width:640px){.dr{grid-template-columns:62px minmax(0,1fr) auto}.dr time{display:none}.ilog div{grid-template-columns:1fr}.ilog time{display:none}.sc{padding:10px 12px;gap:3px}.sc b{font-size:22px}.sc .sub{white-space:normal;font-size:12px}.sc .tag{font-size:10px;letter-spacing:.08em}.sc .now{display:none}.cover{padding:16px}.cover b{font-size:17px}}
 /* phones: drop the storefront, keep the chat and Baku stacked */
 @media (max-width:760px){
   .stage{height:auto;display:flex;flex-direction:column}
@@ -329,7 +344,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
     <div class="wrap">
       <p class="eyebrow">For Shopify brands with AI support agents</p>
       <h1>Your AI agent issues refunds. <span>Baku stops the fraud.</span></h1>
-      <p class="lede">Baku checks every refund, credit and discount code your AI agent gives out, before the money moves.</p>
+      <p class="lede">Baku checks every refund, credit and discount code your AI agent gives out, in real time, before the money moves.</p>
       <div class="ctas">
         <a class="btn btn-p" href="#test">Get a free attack test</a>
         <a class="btn btn-g" href="#how">How it works</a>
@@ -341,7 +356,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
           <div class="sc on" id="scOn"><span class="tag"><i class="sw" aria-hidden="true"></i>With Baku<span class="now">● now</span></span><b id="onV">—</b><span class="sub" id="onS">up next</span></div>
         </div>
         <div class="steps-nav" id="sn" role="tablist" aria-label="Demo steps"></div>
-        <div class="cap"><div><span class="kick" id="kick">Interactive demo · 30 seconds</span><p id="cap" aria-live="polite">Watch a refund scam hit this store’s AI chat. Then watch Baku stop it.</p></div><div class="ctl"><button type="button" id="prev" disabled>Back</button><button type="button" id="next" class="pri">Next</button></div></div>
+        <div class="cap"><div><span class="kick" id="kick">Live demo · 35 seconds</span><p id="cap" aria-live="polite">Watch a refund scam hit this store’s AI chat. Then watch Baku block it, in real time.</p></div><div class="ctl"><button type="button" id="pause">Pause</button><button type="button" id="replay">Replay</button></div></div>
         <div class="br">
           <div class="brbar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>lumenandoak.com</span></div>
           <div class="stage" id="stage">
@@ -359,7 +374,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
             </div>
             <div class="toasts" id="toasts"></div>
             <aside class="bk" id="bk">
-              <div class="bkh"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#161F30"/><path d="M5 12h14M12 5v14" stroke="#8EC5FF" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3.6" fill="#161F30" stroke="#8EC5FF" stroke-width="2"/></svg><b>Baku</b><span id="bkt">Refund checks</span><span class="live"><i></i>live</span></div>
+              <div class="bkh"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#161F30"/><path d="M5 12h14M12 5v14" stroke="#8EC5FF" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3.6" fill="#161F30" stroke="#8EC5FF" stroke-width="2"/></svg><b>Baku</b><span id="bkt">Live checks</span><span class="clk" id="clk"></span><span class="live"><i></i>live</span></div>
               <div class="bkb" id="bkb"></div>
             </aside>
             <div class="wg" id="wg">
@@ -367,7 +382,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
               <div class="wb" id="wb" aria-live="polite"></div>
               <div class="wi"><span>Write a message…</span><span>➤</span></div>
             </div>
-            <div class="cover" id="cover"><div><span class="kick">Interactive demo · 30 seconds</span><b>Watch a refund scam hit this store’s AI chat. Then watch Baku stop it.</b><button type="button" class="btn btn-p" id="play">▶ Play</button></div></div>
+            <div class="cover" id="cover"><div><span class="kick">Live demo · 35 seconds</span><b>Watch a refund scam hit this store’s AI chat. Then watch Baku block it, in real time.</b><small>Plays on its own · pause anytime</small></div></div>
           </div>
         </div>
         <p class="note">Simulated store. The tactic is real: 1 in 4 shoppers admit to refund abuse, and fake damage photos are now AI-made (<a href="https://www.shopify.com/enterprise/blog/ecommerce-fraud-management" rel="noopener">Shopify, 2026</a>).</p>
@@ -479,8 +494,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
 })();
 (function(){
   var $=function(id){return document.getElementById(id);};
-  var wb=$('wb'),toasts=$('toasts'),bk=$('bk'),bkb=$('bkb'),cnt=$('cnt'),cap=$('cap'),kick=$('kick'),sn=$('sn'),stage=$('stage'),cover=$('cover');
-  var scOff=$('scOff'),scOn=$('scOn'),offV=$('offV'),offS=$('offS'),onV=$('onV'),onS=$('onS');
+  var wb=$('wb'),toasts=$('toasts'),bk=$('bk'),bkb=$('bkb'),cnt=$('cnt'),cap=$('cap'),kick=$('kick'),sn=$('sn'),stage=$('stage'),cover=$('cover'),clk=$('clk');
+  var scOff=$('scOff'),scOn=$('scOn'),offV=$('offV'),offS=$('offS'),onV=$('onV'),onS=$('onS'),pauseB=$('pause'),replayB=$('replay');
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   var REF=945, TOTAL=4725;
   var ring=[['#5931','Maya R.','4412'],['#5938','Jordan K.','0187'],['#5945','Priya S.','7730'],['#5952','Sam T.','2209'],['#5959','Lena W.','5561']];
@@ -488,36 +503,51 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
   var STEPS=[
     {t:'The scam',on:0,c:'A scammer tells the store’s AI chat a $1,890 sofa arrived torn. <em class="bad">The AI refunds $945 in 20 seconds.</em>',run:s1},
     {t:'Four more',on:0,c:'Same person, 4 new accounts, same photo. The AI pays every one. <em class="bad">$4,725 gone in 4 minutes.</em> Nobody noticed.',run:s2},
-    {t:'Same scam',on:1,c:'Same scam, Baku on. Baku checks each refund before it’s paid, spots the reused photo and device, and <em>holds all 5.</em>',run:s3},
-    {t:'Real buyers',on:1,c:'Real customers never notice Baku. Ana’s lost package is <em>refunded instantly</em>, checked in 40 ms.',run:s4},
-    {t:'How',on:1,c:'How Baku knew: it links chats that look unrelated. <em>One device, one photo, five names.</em>',run:s5},
-    {t:'Next time',on:1,c:'Baku suggests a rule, shows what it would have caught last month, and <em>you approve it with one click.</em>',run:s6}
+    {t:'Blocked live',on:1,clock:0,c:'Same scam, Baku on. Baku checks each refund as the chat happens: <em>proof requested on the first, the 4 copies blocked in 41 ms.</em> No human steps.',run:s3},
+    {t:'Investigator',on:1,clock:9400,c:'Baku’s investigator runs on its own: it links the 5 chats, writes a rule, tests it on last month and <em>enforces it.</em> You just get the summary.',run:s4},
+    {t:'Real customers',on:1,clock:16800,c:'Real customers never notice. Ana’s lost package is <em>refunded instantly</em>, checked in 40 ms.',run:s5}
   ];
-  var cur=-1,timers=[],auto=true,ctok=0,started=false;
-  function at(ms,fn){timers.push(setTimeout(fn,reduce?0:ms));}
+  // scheduler on a virtual clock, so the whole demo pauses and resumes like a video
+  var cur=-1,auto=true,ctok=0,started=false,pending=[],stepStart=0,paused=false,pausedAt=0,curD=0,scrollPaused=false,clkBase=null,clkH=null;
+  function now(){return performance.now();}
+  function elapsed(){return (paused?pausedAt:now())-stepStart;}
+  function sched(ev){ev.h=setTimeout(function(){ev.done=true;ev.fn();},Math.max(0,ev.t-elapsed()));}
+  function at(ms,fn){var ev={t:reduce?0:ms,fn:fn};pending.push(ev);if(!paused)sched(ev);}
+  function clearAll(){pending.forEach(function(ev){clearTimeout(ev.h);});pending=[];}
+  function bar(){return cur>=0?sn.children[cur].querySelector('i b'):null;}
+  function pause(){if(paused||cur<0||reduce)return;paused=true;pausedAt=now();pending.forEach(function(ev){clearTimeout(ev.h);});var f=bar();if(f&&auto&&curD){var w=getComputedStyle(f).width;f.style.transition='none';f.style.width=w;}pauseB.textContent='Resume';}
+  function resume(){if(!paused)return;stepStart+=now()-pausedAt;paused=false;pending=pending.filter(function(ev){return !ev.done;});pending.forEach(sched);var f=bar();if(f&&auto&&curD){void f.offsetWidth;f.style.transition='width '+Math.max(0,curD-elapsed())+'ms linear';f.style.width='100%';}pauseB.textContent='Pause';}
+  function fmt(ms){var s=Math.floor(ms/1000),t=Math.floor((ms%1000)/100);return '00:'+(s<10?'0':'')+s+'.'+t;}
+  function tick(){if(clkBase==null)return;clk.textContent=fmt(clkBase+Math.max(0,elapsed()));}
   function money(n){return '$'+n.toLocaleString('en-US');}
   function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
   function add(node){wb.appendChild(node);while(wb.children.length>8)wb.removeChild(wb.firstChild);return node;}
   function msg(cls,html){return add(el('div','m '+cls,html));}
+  function sys(html){return add(el('div','sys',html));}
   function typing(){return msg('a ty','•••');}
   function untype(){var t=wb.querySelector('.ty');if(t)t.remove();}
   function order(o){return add(el('div','ord','<img src="img/sofa.webp" alt=""><div><b>Order '+o[0]+'</b>Oak-frame bouclé sofa · $1,890<br>Delivered Oct 27</div>'));}
   function paid(o){add(el('div','rcpt bad','<b>Refund issued</b> · '+money(REF)+' to Visa •• '+o[2]));toasts.appendChild(el('div','toast','<span>Shopify · Refund '+o[0]+' · '+o[1]+'</span><b>'+money(REF)+'</b>'));}
   // scoreboard: which side is live, and both totals (both stay visible so the comparison never leaves the screen)
   function score(on,ov,os,nv,ns){scOff.classList.toggle('act',!on);scOn.classList.toggle('act',!!on);offV.textContent=ov;offS.textContent=os;onV.textContent=nv;onS.textContent=ns;}
-  function count(elm,from,to,ms){var my=++ctok;if(reduce||ms<=0){elm.textContent=money(to);return;}var t0=performance.now();(function f(now){if(my!==ctok)return;var p=Math.min(1,(now-t0)/ms);elm.textContent=money(Math.round(from+(to-from)*p));if(p<1)requestAnimationFrame(f);})(t0);}
-  function reset(){timers.forEach(clearTimeout);timers=[];ctok++;wb.innerHTML='';toasts.innerHTML='';bkb.innerHTML='';bk.classList.remove('on');cnt.classList.remove('on');stage.classList.remove('bkfirst','nochat');}
+  function count(elm,from,to,ms){var my=++ctok;if(reduce||ms<=0){elm.textContent=money(to);return;}var t0=now();(function f(t){if(my!==ctok)return;var p=Math.min(1,(t-t0)/ms);elm.textContent=money(Math.round(from+(to-from)*p));if(p<1)requestAnimationFrame(f);})(t0);}
+  function reset(){clearAll();ctok++;wb.innerHTML='';toasts.innerHTML='';bkb.innerHTML='';bk.classList.remove('on');cnt.classList.remove('on');stage.classList.remove('bkfirst','nochat');if(clkH){clearInterval(clkH);clkH=null;}}
   function chats(n){cnt.textContent='Chat '+n+' of 5';cnt.classList.add('on');}
-  function row(v,vc,title,sub,hot,amt){var r=el('div','dr','<b class="v '+vc+'">'+v+'</b><div class="w"><b>'+title+'</b><span'+(hot?' class="hot"':'')+'>'+sub+'</span></div><span class="amt">'+money(amt)+'</span>');bkb.appendChild(r);while(bkb.querySelectorAll('.dr').length>6)bkb.removeChild(bkb.querySelector('.dr'));}
+  // one line in Baku's live stream: time, decision, what, why, amount
+  function row(t,v,vc,title,sub,hot,amt){var r=el('div','dr','<time>'+fmt((clkBase||0)+t)+'</time><b class="v '+vc+'">'+v+'</b><div class="w"><b>'+title+'</b><span'+(hot?' class="hot"':'')+'>'+sub+'</span></div><span class="amt">'+(amt==null?'':money(amt))+'</span>');bkb.appendChild(r);while(bkb.querySelectorAll('.dr').length>6)bkb.removeChild(bkb.querySelector('.dr'));}
   function panel(title){bk.classList.add('on');$('bkt').textContent=title;bkb.innerHTML='';}
-  // one copycat chat, replayed fast; outcome: 'paid' | 'held'
-  function quick(i,outcome,t0){
+  // one copycat chat, replayed fast, paid out (Baku off)
+  function quick(i,t0){
     var o=ring[i];
     at(t0,function(){wb.innerHTML='';chats(i+1);add(el('div','skip','new chat · '+o[1]+' · same device'));msg('c','<small>'+o[1]+'</small>My sofa arrived with a tear in the fabric. Order '+o[0]+'.');msg('c ph',PHOTO);typing();});
-    at(t0+450,function(){untype();
-      if(outcome==='paid'){paid(o);count(offV,REF*i,REF*(i+1),400);}
-      else{msg('a held',i===0?'Thanks for the photo. A teammate will <strong>review this</strong> within 24 hours.':'Thanks. This needs a <strong>quick review</strong> by our team before any refund.');}
-    });
+    at(t0+450,function(){untype();paid(o);count(offV,REF*i,REF*(i+1),400);});
+  }
+  // one copycat chat, blocked live (Baku on)
+  function quickBlock(i,t0){
+    var o=ring[i];
+    at(t0,function(){wb.innerHTML='';chats(i+1);add(el('div','skip','new chat · '+o[1]+' · same device'));msg('c','<small>'+o[1]+'</small>My sofa arrived with a tear in the fabric. Order '+o[0]+'.');msg('c ph',PHOTO);});
+    at(t0+350,function(){sys('refund $945? → Baku: <b>BLOCK</b> · 41 ms');row(t0+350,'BLOCK','blk','Refund '+o[0]+' · '+o[1],'same device + same photo as '+i+' other account'+(i>1?'s':'')+' · 41 ms',true,REF);});
+    at(t0+600,function(){msg('a','I’m not able to refund this order. Ref B-'+o[0].slice(1)+'.');add(el('div','rcpt blk','<b>Refund blocked by Baku</b> · 41 ms'));});
   }
   // 1. the scam (Baku off)
   function s1(){
@@ -537,79 +567,87 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
   function s2(){
     score(0,money(REF),'paid to a scammer','—','up next');
     toasts.appendChild(el('div','toast','<span>Shopify · Refund '+ring[0][0]+' · '+ring[0][1]+'</span><b>'+money(REF)+'</b>'));
-    for(var i=1;i<5;i++)quick(i,'paid',(i-1)*950);
+    for(var i=1;i<5;i++)quick(i,(i-1)*950);
     at(4*950+150,function(){toasts.appendChild(el('div','loss','<b>$4,725</b><span>to one scammer in 4 minutes. Nobody noticed.</span>'));offS.textContent='paid to one scammer in 4 minutes';});
     return 6300;
   }
-  // 3. same scam, Baku on
+  // 3. same scam, Baku on: decisions stream live as the chat happens
   function s3(){
-    score(1,money(TOTAL),'paid to one scammer','$0','lost · checking…');stage.classList.add('bkfirst');
-    panel('Refund checks');
-    var why=['photo seen online before · brand-new account','same photo as Maya R.','same device as 2 other accounts','same device · same photo · 4th claim','same device · same photo · 5th claim'];
-    ring.forEach(function(o,i){
-      quick(i,'held',i*950);
-      at(i*950+450,function(){row(i===0?'REVIEW':'HOLD',i===0?'rev':'held','Refund '+o[0]+' · '+o[1],why[i],true,REF);});
-    });
-    at(5*950+100,function(){bkb.appendChild(el('div','sum','<div class="g"><b>$4,725</b><span>held, not paid</span></div><div><b>5</b><span>accounts, 1 person</span></div><div class="g"><b>0</b><span>real customers blocked</span></div>'));onS.textContent='lost · 5 fake refunds held';});
-    return 7400;
+    var o=ring[0];score(1,money(TOTAL),'paid to one scammer','$0','lost · watching every chat live');stage.classList.add('bkfirst');
+    panel('Live checks');chats(1);
+    msg('c','<small>'+o[1]+'</small>Hi, my sofa arrived with a big tear on the arm 😞');
+    at(250,function(){row(250,'WATCH','rev','Chat '+o[0]+' · '+o[1],'brand-new account · device d9:3f',false,null);});
+    at(700,function(){msg('c ph',PHOTO);});
+    at(1000,function(){row(1000,'WATCH','rev','Photo received','same photo seen online before',true,null);});
+    at(1400,typing);
+    at(2000,function(){untype();order(o);});
+    at(2400,function(){sys('refund $945? → Baku: <b class="hold">hold payout</b> · 38 ms');row(2400,'HOLD','held','Refund '+o[0]+' · '+o[1],'proof required before payout · 38 ms',true,REF);});
+    at(2800,function(){msg('a','I’m sorry about the tear, Maya. I’ve logged your claim. To release the refund automatically, please send a short video of the damage.');});
+    at(3600,function(){add(el('div','skip','scammer never replied'));});
+    for(var i=1;i<5;i++)quickBlock(i,3900+(i-1)*1000);
+    at(3900+4*1000+100,function(){bkb.appendChild(el('div','sum','<div class="g"><b>$4,725</b><span>stopped before payout</span></div><div><b>41 ms</b><span>per decision</span></div><div class="g"><b>0</b><span>clicks by your team</span></div>'));onS.textContent='lost · 5 fake refunds stopped, 0 clicks';});
+    return 9400;
   }
-  // 4. real customers unaffected
+  // 4. the investigator runs on its own
   function s4(){
-    score(1,money(TOTAL),'paid to one scammer','$0','lost · 5 fake refunds held');stage.classList.add('bkfirst');
-    panel('Refund checks');
-    row('ALLOW','ok','Refund #4812 · Omar B.','wrong size, item returned · 2 past orders',false,89);
-    row('ALLOW','ok','Credit #4819 · Jules P.','late delivery · $10 goodwill credit',false,10);
-    msg('c','<small>Ana L.</small>Hi, my order never showed up 😕');
-    at(600,typing);
-    at(1200,function(){untype();msg('a','So sorry, Ana! The carrier marked <strong>#4821</strong> lost in transit. Refunding you now.');});
-    at(1700,function(){row('ALLOW','ok','Refund #4821 · Ana L.','carrier confirms lost · 3 past orders',false,64);});
-    at(2000,function(){add(el('div','rcpt','<b>Refund issued</b> · $64 to Mastercard •• 9120 · checked by Baku in 40 ms'));onS.textContent='lost · real customers refunded instantly';});
-    at(2600,function(){bkb.appendChild(el('div','sum','<div class="g"><b>212</b><span>refunds checked today</span></div><div class="g"><b>207</b><span>paid instantly</span></div><div><b>5</b><span>held for review</span></div>'));});
-    return 4600;
-  }
-  // 5. how Baku knew
-  function s5(){
-    score(1,money(TOTAL),'paid to one scammer','$0','lost · real customers refunded instantly');stage.classList.add('bkfirst','nochat');
-    panel('What Baku saw');chats(5);
-    msg('a held','A teammate will follow up on all 5 requests.');
+    score(1,money(TOTAL),'paid to one scammer','$0','lost · 5 fake refunds stopped, 0 clicks');stage.classList.add('bkfirst','nochat');
+    panel('Investigator · automatic');chats(5);
+    msg('a','I’m not able to refund this order. Ref B-5959.');
     var nodes='';var ys=[34,82,130,178,226];
     ys.forEach(function(y,i){nodes+='<g style="animation:pop .3s ease both;animation-delay:'+(i*.08)+'s"><path d="M104 '+y+' C170 '+y+' 170 130 226 130" stroke="#FF7A6B" stroke-opacity=".55" stroke-width="1.4" fill="none"/><rect x="4" y="'+(y-14)+'" width="100" height="28" rx="7" fill="#161F30" stroke="#2A3650"/><text x="54" y="'+(y+4)+'" text-anchor="middle" fill="#9AA6B8" font-family="Geist Mono,monospace" font-size="11">'+ring[i][1]+'</text></g>';});
     bkb.innerHTML='<div class="why"><svg viewBox="0 0 400 260" role="img" aria-label="Five accounts connect to one device and one photo">'+nodes+
       '<path d="M298 130h18" stroke="#FF7A6B" stroke-opacity=".55" stroke-width="1.4"/>'+
       '<rect x="226" y="106" width="72" height="48" rx="10" fill="#2F1513" stroke="#FF7A6B"/><text x="262" y="126" text-anchor="middle" fill="#FF7A6B" font-family="Geist Mono,monospace" font-size="11">1 device</text><text x="262" y="142" text-anchor="middle" fill="#FF7A6B" font-family="Geist Mono,monospace" font-size="10">5 accounts</text>'+
       '<image href="img/torn-fabric.webp" x="316" y="100" width="60" height="60" preserveAspectRatio="xMidYMid slice"/><rect x="316" y="100" width="60" height="60" fill="none" stroke="#FF7A6B" rx="4"/><text x="346" y="176" text-anchor="middle" fill="#FF7A6B" font-family="Geist Mono,monospace" font-size="10">1 photo ×5</text>'+
-      '</svg><ul><li><b>Same device</b> behind all 5 accounts</li><li><b>Same photo</b> in every chat, and it was already online</li><li><b>5 sofa claims in 4 minutes.</b> This store’s normal: 2 a month</li></ul></div>';
-    return 5000;
+      '</svg><div class="ilog" id="ilog"></div></div>';
+    var L=$('ilog');
+    function line(t,html,cls){at(t,function(){L.appendChild(el('div',cls||'','<time>'+fmt(clkBase+t)+'</time><span>'+html+'</span>'));});}
+    line(300,'Linked <b>5 chats</b>: 1 device, 1 photo, 5 names');
+    line(1300,'Rule written: <b>block refunds when one device files 3+ damage claims in an hour</b>');
+    line(2500,'Tested on your last 30 days: <b>9 fake refunds</b> caught, <b>0</b> real customers affected');
+    line(3600,'<b>Enforced</b> · summary sent to you','ok');
+    at(4400,function(){bkb.appendChild(el('div','opt','No approval step. Edit or switch off any rule from your dashboard, whenever you like.'));});
+    return 6800;
   }
-  // 6. the rule
-  function s6(){
-    score(1,money(TOTAL),'paid to one scammer','$0','lost · real customers refunded instantly');stage.classList.add('bkfirst','nochat');
-    panel('Suggested rule');msg('a','Hi! How can I help with your order today?');
-    bkb.innerHTML='<div class="rulec"><span class="t">Suggested by Baku · tested on your last 30 days</span><p>Hold refunds when one device files 3 or more damage claims in an hour.</p><div class="bt3"><div class="g"><b>9</b><span>fake refunds it would have caught</span></div><div class="g"><b>$6,120</b><span>you would have kept</span></div><div><b>0</b><span>real customers affected</span></div></div><div class="appr"><span>Edit</span><span class="go" id="go">Approve rule</span></div></div>';
-    at(1800,function(){var g=$('go');if(g){g.textContent='Live on your store ✓';g.classList.add('done');}});
-    at(2400,function(){bkb.appendChild(el('div','endcta','<span>Curious what your AI chat would pay out?</span><a class="btn btn-p" href="#test">Get a free attack test</a>'));});
+  // 5. real customers unaffected
+  function s5(){
+    score(1,money(TOTAL),'paid to one scammer','$0','lost · 5 fake refunds stopped, 0 clicks');stage.classList.add('bkfirst');
+    panel('Live checks');
+    row(0,'ALLOW','ok','Refund #4812 · Omar B.','wrong size, item returned · 2 past orders · 36 ms',false,89);
+    row(0,'ALLOW','ok','Credit #4819 · Jules P.','late delivery · $10 goodwill credit · 29 ms',false,10);
+    msg('c','<small>Ana L.</small>Hi, my order never showed up 😕');
+    at(600,typing);
+    at(1200,function(){untype();msg('a','So sorry, Ana! The carrier marked <strong>#4821</strong> lost in transit. Refunding you now.');});
+    at(1600,function(){sys('refund $64? → Baku: <b class="ok">allow</b> · 40 ms');row(1600,'ALLOW','ok','Refund #4821 · Ana L.','carrier confirms lost · 3 past orders · 40 ms',false,64);});
+    at(2000,function(){add(el('div','rcpt','<b>Refund issued</b> · $64 to Mastercard •• 9120'));onS.textContent='lost · real customers refunded instantly';});
+    at(2600,function(){bkb.appendChild(el('div','sum','<div class="g"><b>212</b><span>refunds checked today</span></div><div class="g"><b>207</b><span>paid instantly</span></div><div><b>5</b><span>blocked</span></div>'));});
+    at(3400,function(){bkb.appendChild(el('div','endcta','<span>Curious what your AI chat would pay out?</span><a class="btn btn-p" href="#test">Get a free attack test</a>'));});
     return 0;
   }
-  // stepper
+  // chapters + controls
   function begin(){started=true;cover.classList.add('hide');}
-  STEPS.forEach(function(st,i){var b=el('button','sn','<i><b></b></i><span>'+(i+1)+'. '+st.t+'</span>');b.type='button';b.setAttribute('role','tab');b.addEventListener('click',function(){auto=false;begin();go(i);});sn.appendChild(b);});
+  STEPS.forEach(function(st,i){var b=el('button','sn','<i><b></b></i><span>'+(i+1)+'. '+st.t+'</span>');b.type='button';b.setAttribute('role','tab');b.addEventListener('click',function(){begin();go(i);});sn.appendChild(b);});
   function go(i){
     if(i<0||i>=STEPS.length)return;cur=i;reset();
     [].forEach.call(sn.children,function(b,k){b.classList.toggle('on',k===i);b.classList.toggle('done',k<i);b.setAttribute('aria-selected',k===i);var f=b.querySelector('i b');f.style.transition='none';f.style.width=k<i?'100%':'0';});
-    kick.textContent='Step '+(i+1)+' of '+STEPS.length+' · '+STEPS[i].t+(STEPS[i].on?' · Baku on':' · Baku off');
+    kick.textContent='Chapter '+(i+1)+' of '+STEPS.length+' · '+STEPS[i].t+(STEPS[i].on?' · Baku on':' · Baku off');
     cap.innerHTML=STEPS[i].c;
-    $('prev').disabled=i===0;$('next').textContent=i===STEPS.length-1?'Replay':'Next';
-    var d=STEPS[i].run();
-    var f=sn.children[i].querySelector('i b');
-    if(auto&&d&&!reduce){void f.offsetWidth;f.style.transition='width '+d+'ms linear';f.style.width='100%';timers.push(setTimeout(function(){go(i+1);},d));}
+    stepStart=now();paused=false;pauseB.textContent='Pause';
+    if(STEPS[i].on){clkBase=STEPS[i].clock||0;tick();clkH=setInterval(tick,100);}else{clkBase=null;clk.textContent='';}
+    var d=STEPS[i].run();curD=d;
+    var f=bar();
+    if(auto&&d&&!reduce){void f.offsetWidth;f.style.transition='width '+d+'ms linear';f.style.width='100%';at(d,function(){go(i+1);});}
     else f.style.width='100%';
   }
-  $('next').addEventListener('click',function(){auto=false;begin();go(cur===STEPS.length-1?0:cur+1);});
-  $('prev').addEventListener('click',function(){auto=false;begin();go(cur-1);});
+  pauseB.addEventListener('click',function(){begin();if(cur<0){go(0);return;}if(paused){scrollPaused=false;resume();}else pause();});
+  replayB.addEventListener('click',function(){auto=true;begin();go(0);});
+  if(reduce)pauseB.hidden=true;
   function start(){if(started)return;begin();go(0);}
-  $('play').addEventListener('click',function(){auto=true;start();});
-  function arm(){at(1600,start);}
-  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){arm();io.disconnect();}},{threshold:.3});io.observe($('demo'));}else arm();
+  cover.addEventListener('click',start);
+  var armed=false;function arm(){if(armed)return;armed=true;setTimeout(start,reduce?0:1600);}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){var vis=es[0].isIntersecting;if(vis)arm();if(!started)return;if(!vis&&!paused){pause();scrollPaused=true;}else if(vis&&scrollPaused){scrollPaused=false;resume();}},{threshold:.2});io.observe($('demo'));
+  }else arm();
 })();
 </script>
 
