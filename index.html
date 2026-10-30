@@ -268,6 +268,20 @@ h1 span{color:var(--soft)}
 .bkh .live{margin-left:12px}
 .cover small{font-size:12.5px;color:var(--soft)}
 @media (max-width:640px){.dr{grid-template-columns:62px minmax(0,1fr) auto}.dr time{display:none}.ilog div{grid-template-columns:1fr}.ilog time{display:none}.sc{padding:10px 12px;gap:3px}.sc b{font-size:22px}.sc .sub{white-space:normal;font-size:12px}.sc .tag{font-size:10px;letter-spacing:.08em}.sc .now{display:none}.cover{padding:16px}.cover b{font-size:17px}}
+/* Baku card: a distinct surface, separate from both the page and the store */
+.bk{left:14px;top:14px;bottom:14px;width:calc(100% - 384px);border-radius:14px;border:1px solid #2E4A78;background:linear-gradient(180deg,#0F1832,#0A1122);box-shadow:0 0 0 1px rgba(142,197,255,.1),0 30px 80px -30px rgba(0,0,0,.85),0 0 70px -25px rgba(142,197,255,.45);overflow:hidden}
+.bk::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--ice),var(--ok))}
+.bkh{background:rgba(142,197,255,.07);border-bottom:1px solid #243B63;color:var(--soft)}
+.bkh b{color:#fff}
+.bkh .clk{color:var(--ice)}
+.bkh .live{background:rgba(94,211,160,.12);color:var(--ok);padding:3px 9px;border-radius:999px}
+.bk .dr{border-top-color:#1F3156}
+.bk .sum div,.bk .endcta{background:rgba(142,197,255,.05);border-color:#2A4068}
+.bk .rulec{background:rgba(142,197,255,.06);border-color:#2A4068}
+.bk .bt3 div{background:rgba(8,11,18,.5);border-color:#1F3156}
+.bk .opt{border-top-color:#1F3156}
+.stage .store{transition:filter .5s}
+.stage.bkfirst .store{filter:brightness(.55) saturate(.6)}
 /* phones: drop the storefront, keep the chat and Baku stacked */
 @media (max-width:760px){
   .stage{height:auto;display:flex;flex-direction:column}
@@ -285,6 +299,13 @@ h1 span{color:var(--soft)}
   .bkb{min-height:0}
   .why{grid-template-columns:1fr}
   .sum b{font-size:18px}
+}
+
+@media (max-width:760px){
+  .xm{display:none}
+  .bkh{gap:8px;padding:12px 14px}
+  .bkh .live{font-size:0;padding:0;background:none;margin-left:8px}
+  .bk{left:auto;top:auto;bottom:auto;width:auto;margin:12px;border:1px solid #2E4A78;border-radius:14px}
 }
 
 /* sections */
@@ -535,7 +556,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
   function chats(n){cnt.textContent='Chat '+n+' of 5';cnt.classList.add('on');}
   // one line in Baku's live stream: time, decision, what, why, amount
   function row(t,v,vc,title,sub,hot,amt){var r=el('div','dr','<time>'+fmt((clkBase||0)+t)+'</time><b class="v '+vc+'">'+v+'</b><div class="w"><b>'+title+'</b><span'+(hot?' class="hot"':'')+'>'+sub+'</span></div><span class="amt">'+(amt==null?'':money(amt))+'</span>');bkb.appendChild(r);while(bkb.querySelectorAll('.dr').length>6)bkb.removeChild(bkb.querySelector('.dr'));}
-  function panel(title){bk.classList.add('on');$('bkt').textContent=title;bkb.innerHTML='';}
+  function panel(title){bk.classList.add('on');$('bkt').innerHTML=title;bkb.innerHTML='';}
   // one copycat chat, replayed fast, paid out (Baku off)
   function quick(i,t0){
     var o=ring[i];
@@ -591,7 +612,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
   // 4. the investigator runs on its own
   function s4(){
     score(1,money(TOTAL),'paid to one scammer','$0','lost · 5 fake refunds stopped, 0 clicks');stage.classList.add('bkfirst','nochat');
-    panel('Investigator · automatic');chats(5);
+    panel('Investigator<span class="xm"> · automatic</span>');chats(5);
     msg('a','I’m not able to refund this order. Ref B-5959.');
     var nodes='';var ys=[34,82,130,178,226];
     ys.forEach(function(y,i){nodes+='<g style="animation:pop .3s ease both;animation-delay:'+(i*.08)+'s"><path d="M104 '+y+' C170 '+y+' 170 130 226 130" stroke="#FF7A6B" stroke-opacity=".55" stroke-width="1.4" fill="none"/><rect x="4" y="'+(y-14)+'" width="100" height="28" rx="7" fill="#161F30" stroke="#2A3650"/><text x="54" y="'+(y+4)+'" text-anchor="middle" fill="#9AA6B8" font-family="Geist Mono,monospace" font-size="11">'+ring[i][1]+'</text></g>';});
