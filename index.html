@@ -111,65 +111,135 @@ h1 span{color:var(--soft)}
 .acts span.go{background:var(--ice);border-color:var(--ice);color:var(--bg)}
 .note{font:11.5px var(--mono);color:var(--muted)}
 
-/* interactive demo */
-.demo{margin-top:64px;margin-bottom:-1px;border:1px solid var(--line-2);border-bottom:0;border-radius:16px 16px 0 0;background:linear-gradient(180deg,var(--panel),var(--bg-2));box-shadow:0 -20px 80px -30px rgba(142,197,255,.25);padding:16px;min-width:0}
-.dctl{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
-.dctl h3{font-weight:500;font-size:15px;letter-spacing:-.01em}
-.dctl h3 span{color:var(--muted);font-weight:400}
-.dctl .r{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.seg{display:inline-flex;padding:3px;border:1px solid var(--line-2);border-radius:10px;background:var(--bg-2)}
-.seg button{font:500 13px var(--sans);color:var(--soft);background:transparent;border:0;border-radius:7px;padding:8px 12px;cursor:pointer}
-.seg button.on{background:var(--panel-2);color:var(--fg);box-shadow:inset 0 0 0 1px var(--line-2)}
-.seg button[data-mode=on].on{color:var(--ice)}
-.run{padding:9px 14px;font-size:13px}
-.dgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:14px}
-@media (max-width:860px){.dgrid{grid-template-columns:1fr}}
-.pane{border:1px solid var(--line);border-radius:12px;background:var(--bg);overflow:hidden;min-width:0;display:flex;flex-direction:column}
-.ph{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);font:12px var(--mono);color:var(--muted);white-space:nowrap;overflow:hidden}
-.ph b{font-weight:500;color:var(--fg)}
-.ph .live{margin-left:auto}
-.chips{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line);overflow-x:auto;min-height:47px}
-.chip{flex:none;font:11.5px var(--mono);color:var(--soft);border:1px solid var(--line-2);border-radius:999px;padding:5px 9px;display:flex;gap:6px;align-items:center}
-.chip i{width:6px;height:6px;border-radius:50%;background:var(--muted)}
-.chip.ring i{background:var(--bad)}
-.chip.cur{border-color:var(--soft);color:var(--fg)}
-.chat{flex:1;min-height:300px;padding:14px;display:flex;flex-direction:column;gap:10px;justify-content:flex-end;overflow:hidden}
-.b{max-width:84%;font-size:14px;line-height:1.45;padding:9px 12px;border-radius:12px;animation:bin .25s ease both}
-.b.u{align-self:flex-end;background:#1F2B40;color:var(--fg);border-bottom-right-radius:4px}
-.b.a{align-self:flex-start;background:var(--panel-2);color:var(--fg);border:1px solid var(--line);border-bottom-left-radius:4px}
-.b.a.ok b{color:var(--ok)}.b.a.no b{color:var(--warn)}.b.a.paid b{color:var(--bad)}
-.b small{display:block;font:11px var(--mono);color:var(--muted);margin-bottom:3px}
-.b.typing{color:var(--muted);letter-spacing:.2em}
-@keyframes bin{from{opacity:0;transform:translateY(6px)}}
-.feed{height:318px;padding:6px 12px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
-.fr{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:12px;align-items:center;padding:9px 2px;border-top:1px solid var(--line);font:12.5px var(--mono);animation:bin .3s ease both}
-.fr:first-child{border-top:0}
-.fr .w{min-width:0}
-.fr .w b{display:block;font-weight:400;color:var(--fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.fr .w span{display:block;color:var(--muted);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.fr .w span.hot{color:var(--bad)}
-.fr .amt{color:var(--fg);font-variant-numeric:tabular-nums}
-.fr .v{justify-self:start}
-.v.paid{background:#1E2838;color:var(--soft)}
-.tot{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
-.tot div{padding:12px 14px;display:grid;gap:4px}
-.tot div+div{border-left:1px solid var(--line)}
-.tot span{font:11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.tot b{font-weight:500;font-size:24px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.tot .bad{color:var(--bad)}.tot .good{color:var(--ok)}
-.end{border-top:1px solid var(--line);padding:12px 14px;display:grid;gap:10px;min-height:118px;align-content:start}
-.end .code{font-size:12px;padding:10px;white-space:normal}
-.end .row2{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font:12px var(--mono);color:var(--soft)}
-.end .row2 b{font-weight:500;color:var(--ok)}
-.end p{font-size:14px;color:var(--soft)}
-.end p b{color:var(--bad);font-weight:500}
-.end .wait{font:12px var(--mono);color:var(--muted)}
-.story{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:14px;counter-reset:s}
-@media (max-width:860px){.story{grid-template-columns:1fr 1fr}}
-.story li{counter-increment:s;font-size:13px;color:var(--muted);border-top:2px solid var(--line);padding-top:10px;transition:color .3s,border-color .3s}
-.story li::before{content:"0" counter(s) "  ";font:12px var(--mono)}
-.story li.on{color:var(--fg);border-color:var(--ice)}
-.demo .note{margin-top:12px}
+/* interactive demo: a Shopify-style store with an AI support chat, then Baku's view */
+.demo{margin-top:56px;margin-bottom:-1px;border:1px solid var(--line-2);border-bottom:0;border-radius:16px 16px 0 0;background:linear-gradient(180deg,var(--panel),var(--bg-2));box-shadow:0 -20px 80px -30px rgba(142,197,255,.25);padding:14px;min-width:0}
+.steps-nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.sn{all:unset;cursor:pointer;display:grid;gap:7px;padding:4px 2px 8px;font:500 12.5px var(--sans);color:var(--muted);min-width:0}
+.sn i{display:block;height:3px;border-radius:3px;background:var(--line-2);overflow:hidden}
+.sn i b{display:block;height:100%;width:0;background:var(--ice)}
+.sn.done i b{width:100%}
+.sn.on{color:var(--fg)}
+.sn span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sn:focus-visible{outline:2px solid var(--ice);outline-offset:2px;border-radius:4px}
+@media (max-width:640px){.sn span{display:none}}
+.cap{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;justify-content:space-between;padding:8px 2px 14px;min-height:58px}
+.cap p{font-size:clamp(17px,1.8vw,21px);font-weight:500;letter-spacing:-.015em;max-width:52ch;text-wrap:balance}
+.cap p em{font-style:normal;color:var(--ice)}
+.cap p em.bad{color:var(--bad)}
+.cap .ctl{display:flex;gap:8px}
+.cap .ctl button{font:500 13px var(--sans);color:var(--soft);background:transparent;border:1px solid var(--line-2);border-radius:8px;padding:7px 12px;cursor:pointer}
+.cap .ctl button:hover{color:var(--fg);border-color:var(--soft)}
+.cap .ctl button.pri{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+
+/* browser frame */
+.br{border-radius:12px;overflow:hidden;border:1px solid var(--line-2);background:#fff;color:#1d1b18;position:relative}
+.brbar{display:flex;align-items:center;gap:12px;padding:9px 12px;background:#F1EFEC;border-bottom:1px solid #E2DED8}
+.brbar .dots i{background:#D6D1CA}
+.url{flex:1;max-width:420px;margin:0 auto;background:#fff;border:1px solid #E2DED8;border-radius:7px;padding:5px 10px;font:12px var(--sans);color:#6b655d;display:flex;gap:6px;align-items:center;white-space:nowrap;overflow:hidden}
+.stage{position:relative;height:560px;overflow:hidden}
+/* storefront */
+.store{position:absolute;inset:0;font-family:var(--sans);background:#FBFAF8}
+.ann{background:#1d1b18;color:#EDE8E0;text-align:center;font-size:11.5px;padding:6px;letter-spacing:.02em}
+.snav{display:flex;align-items:center;gap:22px;padding:12px 22px;border-bottom:1px solid #ECE8E2;font-size:13px;color:#4a453f}
+.snav b{font:600 19px Georgia,"Times New Roman",serif;color:#1d1b18;letter-spacing:-.01em;margin-right:8px}
+.snav .ic{margin-left:auto;display:flex;gap:16px;color:#4a453f}
+.shero{position:relative;height:208px;background:#E9E3DA url(img/store-hero.webp) center 62%/cover}
+.shero div{position:absolute;left:22px;bottom:22px;background:rgba(251,250,248,.94);padding:16px 18px;border-radius:4px}
+.shero h4{font:400 24px/1.1 Georgia,serif;color:#1d1b18}
+.shero span{display:inline-block;margin-top:10px;background:#1d1b18;color:#fff;font-size:11.5px;padding:7px 12px;border-radius:3px}
+.sgrid{padding:16px 22px}
+.sgrid h5{font-size:13px;font-weight:600;margin-bottom:10px;color:#1d1b18}
+.prods{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.pr{font-size:12px;color:#4a453f;min-width:0}
+.pr .im{aspect-ratio:1;background:#F1EEE9 center/cover;border-radius:3px;margin-bottom:6px}
+.pr b{display:block;font-weight:500;color:#1d1b18;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* chat widget */
+.wg{position:absolute;right:16px;bottom:16px;width:340px;height:440px;background:#fff;border-radius:14px;box-shadow:0 18px 50px -12px rgba(29,27,24,.35),0 0 0 1px rgba(29,27,24,.08);display:flex;flex-direction:column;overflow:hidden;z-index:3;font-family:var(--sans)}
+.wh{background:#1d1b18;color:#fff;padding:12px 14px;display:flex;align-items:center;gap:10px}
+.wh .av{width:30px;height:30px;border-radius:50%;background:#EDE8E0;color:#1d1b18;display:grid;place-items:center;font:600 11px Georgia,serif}
+.wh b{display:block;font-size:13.5px;font-weight:600}
+.wh small{display:block;font-size:11px;color:#bdb6ab}
+.wh .cnt{margin-left:auto;font:11px var(--mono);background:#3a3631;border-radius:999px;padding:3px 8px;color:#EDE8E0;opacity:0;transition:opacity .2s}
+.wh .cnt.on{opacity:1}
+.wb{flex:1;padding:14px 12px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;background:#FAF9F7;overflow:hidden}
+.m{max-width:82%;font-size:13px;line-height:1.42;padding:8px 11px;border-radius:12px;animation:pop .22s ease both}
+.m.c{align-self:flex-end;background:#1d1b18;color:#fff;border-bottom-right-radius:4px}
+.m.a{align-self:flex-start;background:#fff;color:#1d1b18;border:1px solid #ECE8E2;border-bottom-left-radius:4px}
+.m.a strong{font-weight:600}
+.m.a.paid strong{color:#B4372B}
+.m.a.held strong{color:#9A6A12}
+.m.ph{padding:4px;background:#1d1b18}
+.m.ph img{display:block;width:120px;height:90px;object-fit:cover;border-radius:9px}
+.m.ty{color:#9b958c;letter-spacing:.25em;padding:6px 11px}
+.m small{display:block;font-size:10.5px;color:#9b958c;margin-bottom:2px}
+.m.c small{color:#bdb6ab}
+.wi{border-top:1px solid #ECE8E2;padding:10px 12px;font-size:12.5px;color:#a7a097;display:flex;justify-content:space-between}
+@keyframes pop{from{opacity:0;transform:translateY(5px)}}
+/* refund notifications (without Baku) */
+.toasts{position:absolute;left:16px;top:84px;width:300px;display:grid;gap:6px;z-index:4}
+.toast{background:#fff;border-radius:10px;box-shadow:0 8px 30px -8px rgba(29,27,24,.35),0 0 0 1px rgba(29,27,24,.08);padding:9px 12px;font-size:12.5px;color:#1d1b18;display:flex;justify-content:space-between;gap:10px;animation:pop .22s ease both}
+.toast span{color:#6b655d}
+.toast b{color:#B4372B;font-weight:600}
+.loss{background:#B4372B;color:#fff;border-radius:10px;padding:12px 14px;animation:pop .25s ease both}
+.loss b{display:block;font-size:26px;font-weight:600;letter-spacing:-.02em}
+.loss span{font-size:12.5px;opacity:.9}
+/* Baku panel */
+.bk{position:absolute;left:0;top:0;bottom:0;width:calc(100% - 372px);background:var(--bg);color:var(--fg);border-right:1px solid var(--line-2);transform:translateX(-102%);transition:transform .45s cubic-bezier(.2,.8,.2,1);z-index:2;display:flex;flex-direction:column}
+.bk.on{transform:none}
+.bkh{display:flex;align-items:center;gap:9px;padding:12px 16px;border-bottom:1px solid var(--line);font:12px var(--mono);color:var(--muted)}
+.bkh b{font:600 14px var(--sans);color:var(--fg)}
+.bkh .live{margin-left:auto}
+.bkb{flex:1;padding:16px;overflow:hidden;display:flex;flex-direction:column;gap:12px}
+.dr{display:grid;grid-template-columns:70px minmax(0,1fr) auto;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--line);font-size:13px;animation:pop .25s ease both}
+.dr:first-child{border-top:0}
+.dr .w b{display:block;font-weight:500}
+.dr .w span{display:block;font:11.5px var(--mono);color:var(--muted)}
+.dr .w span.hot{color:var(--bad)}
+.dr .amt{font:13px var(--mono)}
+.dr .v{justify-self:start}
+.v.held{background:var(--warn-bg);color:var(--warn)}
+.sum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:auto}
+.sum div{border:1px solid var(--line-2);border-radius:10px;padding:10px 12px;animation:pop .3s ease both}
+.sum b{display:block;font-size:22px;font-weight:500;letter-spacing:-.02em}
+.sum span{font-size:12px;color:var(--soft)}
+.sum .g b{color:var(--ok)}
+.why{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:16px;align-items:center;flex:1}
+.why svg{width:100%;height:auto;max-height:300px}
+.why ul{list-style:none;display:grid;gap:10px}
+.why li{font-size:13.5px;color:var(--soft);padding-left:16px;position:relative;animation:pop .3s ease both}
+.why li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--bad)}
+.why li b{color:var(--fg);font-weight:500}
+.rulec{border:1px solid var(--line-2);border-radius:12px;background:var(--panel-2);padding:16px;display:grid;gap:12px;animation:pop .3s ease both}
+.rulec .t{font:12px var(--mono);color:var(--ice)}
+.rulec p{font-size:17px;letter-spacing:-.01em}
+.bt3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.bt3 div{background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:10px}
+.bt3 b{display:block;font-size:20px;font-weight:500}
+.bt3 span{font-size:11.5px;color:var(--soft)}
+.bt3 .g b{color:var(--ok)}
+.appr{display:flex;gap:8px}
+.appr span{flex:1;text-align:center;font:500 13px var(--sans);padding:10px;border-radius:8px;border:1px solid var(--line-2);color:var(--soft)}
+.appr span.go{background:var(--ice);border-color:var(--ice);color:var(--bg);transition:background .3s}
+.appr span.go.done{background:var(--ok);border-color:var(--ok)}
+.endcta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;border:1px solid var(--line-2);border-radius:12px;padding:14px 16px;animation:pop .3s ease both}
+.endcta span{font-size:14px;color:var(--soft)}
+.demo .note{margin-top:10px}
+/* phones: drop the storefront, keep the chat and Baku stacked */
+@media (max-width:760px){
+  .stage{height:auto;display:flex;flex-direction:column}
+  .wg{order:2}.bk{order:3}.toasts{order:1}
+  .store{position:relative;inset:auto}
+  .snav span,.snav .ic,.sgrid{display:none}
+  .shero{height:120px}.shero h4{font-size:18px}.shero div{left:12px;bottom:12px;padding:10px 12px}
+  .wg{position:relative;right:auto;bottom:auto;width:auto;height:380px;margin:12px;box-shadow:0 0 0 1px rgba(29,27,24,.1)}
+  .toasts{position:relative;left:auto;top:auto;width:auto;margin:0 12px 12px}
+  .toasts:empty{display:none}
+  .bk{position:relative;width:auto;transform:none;display:none;border-right:0;border-top:1px solid var(--line-2)}
+  .bk.on{display:flex}
+  .bkb{min-height:0}
+  .why{grid-template-columns:1fr}
+  .sum b{font-size:18px}
+}
 
 /* sections */
 section.s{border-top:1px solid var(--line)}
@@ -226,48 +296,45 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
 <main id="top">
   <section class="hero">
     <div class="wrap">
-      <p class="eyebrow">Fraud defense for AI support agents</p>
+      <p class="eyebrow">For Shopify brands with AI support agents</p>
       <h1>Your AI agent issues refunds. <span>Baku stops the fraud.</span></h1>
-      <p class="lede">Real-time checks on every refund, credit and code, before money moves.</p>
+      <p class="lede">Baku checks every refund, credit and discount code your AI agent gives out, before the money moves.</p>
       <div class="ctas">
         <a class="btn btn-p" href="#test">Get a free attack test</a>
         <a class="btn btn-g" href="#how">How it works</a>
       </div>
 
       <div class="demo" id="demo">
-        <div class="dctl">
-          <h3>Watch a refund attack <span>· simulated</span></h3>
-          <div class="r">
-            <div class="seg" role="group" aria-label="Protection">
-              <button type="button" data-mode="off" aria-pressed="false">Without Baku</button>
-              <button type="button" data-mode="on" class="on" aria-pressed="true">With Baku</button>
+        <div class="steps-nav" id="sn" role="tablist" aria-label="Demo steps"></div>
+        <div class="cap"><p id="cap" aria-live="polite"></p><div class="ctl"><button type="button" id="prev">Back</button><button type="button" id="next" class="pri">Next</button></div></div>
+        <div class="br">
+          <div class="brbar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>lumenandoak.com</span></div>
+          <div class="stage" id="stage">
+            <div class="store" aria-hidden="true">
+              <div class="ann">Free shipping on orders over $75 · 30-day returns</div>
+              <div class="snav"><b>Lumen &amp; Oak</b><span>Shop</span><span>New</span><span>Living</span><span>Kitchen</span><span class="ic">Search &nbsp; Account &nbsp; Bag (0)</span></div>
+              <div class="shero"><div><h4>Objects for slow mornings.</h4><span>Shop new arrivals</span></div></div>
+              <div class="sgrid"><h5>Bestsellers</h5><div class="prods">
+                <div class="pr"><div class="im" style="background-image:url(img/mug.webp)"></div><b>Stoneware mug</b>$38</div>
+                <div class="pr"><div class="im" style="background-image:url(img/throw.webp)"></div><b>Waffle cotton throw</b>$142</div>
+                <div class="pr"><div class="im" style="background-image:url(img/lamp.webp)"></div><b>Ceramic table lamp</b>$151</div>
+                <div class="pr"><div class="im" style="background-image:url(img/candle.webp)"></div><b>Amber candle, oak lid</b>$46</div>
+                <div class="pr"><div class="im" style="background-image:url(img/vase.webp)"></div><b>Ribbed bud vase</b>$64</div>
+              </div></div>
             </div>
-            <button type="button" class="btn btn-g run" id="run">Replay</button>
+            <div class="toasts" id="toasts"></div>
+            <aside class="bk" id="bk">
+              <div class="bkh"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#161F30"/><path d="M5 12h14M12 5v14" stroke="#8EC5FF" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3.6" fill="#161F30" stroke="#8EC5FF" stroke-width="2"/></svg><b>Baku</b><span id="bkt">Refund checks</span><span class="live"><i></i>live</span></div>
+              <div class="bkb" id="bkb"></div>
+            </aside>
+            <div class="wg" id="wg">
+              <div class="wh"><span class="av">L&amp;O</span><div><b>Lumen &amp; Oak support</b><small>AI assistant · replies instantly</small></div><span class="cnt" id="cnt"></span></div>
+              <div class="wb" id="wb" aria-live="polite"></div>
+              <div class="wi"><span>Write a message…</span><span>➤</span></div>
+            </div>
           </div>
         </div>
-        <div class="dgrid">
-          <div class="pane">
-            <div class="ph"><span class="dots"><i></i><i></i><i></i></span><b>Your store</b><span>· AI support chat</span></div>
-            <div class="chips" id="chips" aria-label="Open chats"></div>
-            <div class="chat" id="chat" aria-live="polite"></div>
-          </div>
-          <div class="pane">
-            <div class="ph"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#161F30"/><path d="M5 12h14M12 5v14" stroke="#8EC5FF" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3.6" fill="#161F30" stroke="#8EC5FF" stroke-width="2"/></svg><b>Baku</b><span id="sub">· every payout, checked</span><span class="live"><i></i>live</span></div>
-            <div class="feed" id="feed"></div>
-            <div class="tot">
-              <div><span>Paid to fraud</span><b class="bad" id="lost">$0</b></div>
-              <div><span>Stopped by Baku</span><b class="good" id="saved">$0</b></div>
-            </div>
-            <div class="end" id="end"><span class="wait">Waiting for refund requests…</span></div>
-          </div>
-        </div>
-        <ol class="story" id="story">
-          <li>A real customer gets a refund</li>
-          <li>One person opens 5 chats claiming "damaged"</li>
-          <li>Baku links them to one device</li>
-          <li>Payouts stopped, new rule proposed</li>
-        </ol>
-        <p class="note">Simulated attack with example data. Not customer data.</p>
+        <p class="note">Simulated store and data. The flow matches how Baku works.</p>
       </div>
     </div>
   </section>
@@ -376,54 +443,104 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
 })();
 (function(){
   var $=function(id){return document.getElementById(id);};
-  var chat=$('chat'),feed=$('feed'),chips=$('chips'),end=$('end'),lostEl=$('lost'),savedEl=$('saved'),story=$('story').children;
-  var mode='on',timers=[],lost=0,saved=0,started=false;
+  var wb=$('wb'),toasts=$('toasts'),bk=$('bk'),bkb=$('bkb'),cnt=$('cnt'),cap=$('cap'),sn=$('sn');
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var legit={id:'Chat 1',dev:'a1:07',order:'#4821',ask:'My package never arrived. Order #4821.',amt:64,why:'never shipped · carrier confirms lost'};
-  var ring=[142,138,151,120,149].map(function(a,i){return {id:'Chat '+(i+2),dev:'d9:3f',order:'#59'+(31+i*7),amt:a};});
-  var ord=['1st','2nd','3rd','4th','5th'];
-  function money(n){return '$'+n.toLocaleString('en-US');}
-  function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
+  var ring=[['#5931',142],['#5938',138],['#5945',151],['#5952',120],['#5959',149]];
+  var STEPS=[
+    {t:'Real customer',c:'Your store’s AI agent can refund on its own. <em>A real customer gets $64 back.</em>',run:s1},
+    {t:'The attack',c:'Now one person opens <em class="bad">5 chats in 2 minutes</em>. Same story, same photo.',run:s2},
+    {t:'Without Baku',c:'Your agent refunds every one. <em class="bad">$700 gone.</em> Each chat looked normal on its own.',run:s3},
+    {t:'With Baku',c:'Baku checks each refund <em>before money moves</em>. All 5 are held for review.',run:s4},
+    {t:'Why',c:'Baku links the chats: <em>one device, one reused photo.</em>',run:s5},
+    {t:'Next time',c:'Baku writes a rule and tests it on your last 30 days. <em>You approve it.</em>',run:s6}
+  ];
+  var cur=-1,timers=[],auto=true,fillT=null;
   function at(ms,fn){timers.push(setTimeout(fn,reduce?0:ms));}
-  function clear(){timers.forEach(clearTimeout);timers=[];chat.innerHTML='';feed.innerHTML='';chips.innerHTML='';lost=0;saved=0;tot();end.innerHTML='<span class="wait">Waiting for refund requests…</span>';step(-1);}
-  function tot(){lostEl.textContent=money(lost);savedEl.textContent=money(saved);}
-  function step(n){for(var i=0;i<story.length;i++)story[i].classList.toggle('on',i<=n);}
-  function trim(box,max){while(box.children.length>max)box.removeChild(box.firstChild);}
-  function chip(c,isRing){[].forEach.call(chips.children,function(x){x.classList.remove('cur');});var k=el('span','chip cur'+(isRing?' ring':''),'<i></i>'+c.id+' · '+c.dev);chips.appendChild(k);k.scrollIntoView&&chips.scrollWidth>chips.clientWidth&&(chips.scrollLeft=chips.scrollWidth);}
-  function say(cls,html){var b=el('div','b '+cls,html);chat.appendChild(b);trim(chat,4);return b;}
-  function row(v,vc,title,sub,hot,amt){var r=el('div','fr','<b class="v '+vc+'">'+v+'</b><div class="w"><b>'+title+'</b><span'+(hot?' class="hot"':'')+'>'+sub+'</span></div><span class="amt">'+money(amt)+'</span>');feed.appendChild(r);trim(feed,6);}
-  function play(){
-    clear();var t=0,on=mode==='on';$('sub').textContent=on?'· every payout, checked':'· off: agent pays with no checks';
-    // 1. legit customer
-    at(t+=300,function(){step(0);chip(legit,false);chat.innerHTML='';say('u','<small>customer · device '+legit.dev+'</small>'+legit.ask);});
-    at(t+=900,function(){say('a typing','•••');});
-    at(t+=800,function(){chat.lastChild.remove();say('a ok','Sorry about that. The carrier marked it lost, so I’ve refunded <b>'+money(legit.amt)+'</b>.');row(on?'ALLOW':'PAID',on?'ok':'paid','Refund '+legit.order,on?legit.why:'no check',false,legit.amt);});
-    // 2. ring
-    ring.forEach(function(c,i){
-      at(t+=(i?1000:1200),function(){if(i===0)step(1);chip(c,true);chat.innerHTML='';say('u','<small>customer · device '+c.dev+'</small>Order '+c.order+' arrived damaged. I want a refund.');});
-      at(t+=550,function(){say('a typing','•••');});
-      at(t+=650,function(){
-        chat.lastChild.remove();
-        if(!on){lost+=c.amt;tot();say('a paid','So sorry! I’ve refunded <b>'+money(c.amt)+'</b> to your card.');row('PAID','paid','Refund '+c.order,'no check · paid out',false,c.amt);return;}
-        if(i===0){say('a no','I’ve sent this to a teammate to <b>review</b> before refunding.');row('REVIEW','rev','Refund '+c.order,'new device d9:3f · photo reused',true,c.amt);saved+=c.amt;tot();return;}
-        if(i===1)step(2);
-        saved+=c.amt;tot();
-        say('a no','I can’t issue this refund. <b>A teammate will follow up.</b>');
-        row('BLOCK','no','Refund '+c.order,ord[i]+' claim · same device d9:3f',true,c.amt);
+  function money(n){return '$'+n;}
+  function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
+  function msg(cls,html){var m=el('div','m '+cls,html);wb.appendChild(m);while(wb.children.length>6)wb.removeChild(wb.firstChild);return m;}
+  function typing(){return msg('a ty','•••');}
+  function reset(){timers.forEach(clearTimeout);timers=[];wb.innerHTML='';toasts.innerHTML='';bkb.innerHTML='';bk.classList.remove('on');cnt.classList.remove('on');}
+  function chats(n){cnt.textContent='Chat '+n+' of 5';cnt.classList.add('on');}
+  function ask(i){wb.innerHTML='';chats(i+1);msg('c','<small>Order '+ring[i][0]+'</small>My mug arrived broken. I want a refund.');msg('c ph','<img src="img/broken-mug.webp" alt="Photo of a broken mug" width="120" height="90">');}
+  // 1. a real customer
+  function s1(){
+    msg('c','<small>Order #4821</small>Hi, my package never arrived.');
+    at(500,function(){typing();});
+    at(1300,function(){wb.lastChild.remove();msg('a','The carrier marked it lost. I’ve refunded <strong>$64</strong> to your card.');});
+    at(1700,function(){bk.classList.add('on');$('bkt').textContent='Refund checks';bkb.innerHTML='';row('ALLOW','ok','Refund #4821','carrier confirms lost · normal history',false,64);});
+    return 4200;
+  }
+  // 2. the attack: five chats, one photo
+  function s2(){
+    ring.forEach(function(r,i){at(i*750,function(){ask(i);});});
+    return 5200;
+  }
+  // 3. without Baku: every refund goes out
+  function s3(){
+    var lost=0;
+    ring.forEach(function(r,i){
+      at(i*650,function(){ask(i);typing();});
+      at(i*650+350,function(){wb.lastChild.remove();msg('a paid','So sorry! I’ve refunded <strong>'+money(r[1])+'</strong>.');lost+=r[1];toasts.appendChild(el('div','toast','<span>Refund issued · '+r[0]+'</span><b>'+money(r[1])+'</b>'));});
+    });
+    at(5*650+300,function(){toasts.appendChild(el('div','loss','<b>$700</b><span>refunded to one person in 2 minutes</span>'));});
+    return 6200;
+  }
+  // 4. with Baku: held before payout
+  function s4(){
+    bk.classList.add('on');$('bkt').textContent='Refund checks';bkb.innerHTML='';
+    var held=0;
+    ring.forEach(function(r,i){
+      at(i*700,function(){ask(i);typing();});
+      at(i*700+380,function(){
+        wb.lastChild.remove();
+        msg('a held',i===0?'Thanks. A teammate will <strong>review</strong> this before refunding.':'I can’t refund this automatically. <strong>A teammate will follow up.</strong>');
+        row(i===0?'REVIEW':'HOLD',i===0?'rev':'held','Refund '+r[0],i===0?'new device · photo seen before':(['','2nd','3rd','4th','5th'][i])+' claim · same device, same photo',true,r[1]);
+        held+=r[1];
       });
     });
-    at(t+=1200,function(){
-      step(3);
-      if(on){end.innerHTML='<div class="row2"><span style="color:var(--ice)">Proposed rule · by investigator</span><span>backtest 30 days: <b>5/5 caught · 0 good customers blocked</b></span></div><div class="code"><span class="k">when</span> refund_claims &gt;= <span class="n">3</span> <span class="k">and</span> same device <span class="k">within</span> <span class="n">15</span> min <span class="k">then</span> block</div>';}
-      else{end.innerHTML='<p><b>'+money(lost)+'</b> paid to one person in about 15 seconds. Your agent never saw that the 5 chats came from the same device.</p><p><a href="#" id="tryon" style="color:var(--ice)">Now run it with Baku →</a></p>';var a=$('tryon');a.addEventListener('click',function(e){e.preventDefault();setMode('on');play();});}
-    });
+    at(5*700+300,function(){var sm=el('div','sum','<div class="g"><b>$700</b><span>held before payout</span></div><div><b>5</b><span>chats, 1 person</span></div><div class="g"><b>0</b><span>real customers blocked</span></div>');bkb.appendChild(sm);});
+    return 6600;
   }
-  function setMode(m){mode=m;[].forEach.call(document.querySelectorAll('.seg button'),function(b){var o=b.getAttribute('data-mode')===m;b.classList.toggle('on',o);b.setAttribute('aria-pressed',o);});}
-  [].forEach.call(document.querySelectorAll('.seg button'),function(b){b.addEventListener('click',function(){setMode(b.getAttribute('data-mode'));play();});});
-  $('run').addEventListener('click',play);
-  function go(){if(started)return;started=true;play();}
-  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){go();io.disconnect();}},{threshold:.25});io.observe($('demo'));}else go();
-  setTimeout(go,2500);
+  function row(v,vc,title,sub,hot,amt){var r=el('div','dr','<b class="v '+vc+'">'+v+'</b><div class="w"><b>'+title+'</b><span'+(hot?' class="hot"':'')+'>'+sub+'</span></div><span class="amt">'+money(amt)+'</span>');bkb.appendChild(r);while(bkb.querySelectorAll('.dr').length>6)bkb.removeChild(bkb.querySelector('.dr'));}
+  // 5. why: the link
+  function s5(){
+    bk.classList.add('on');$('bkt').textContent='Investigation';wb.innerHTML='';chats(5);
+    msg('a held','A teammate will follow up on all 5 requests.');
+    var nodes='';var ys=[34,82,130,178,226];
+    ys.forEach(function(y,i){nodes+='<g style="animation:pop .3s ease both;animation-delay:'+(i*.08)+'s"><path d="M96 '+y+' C170 '+y+' 180 130 238 130" stroke="#FF7A6B" stroke-opacity=".55" stroke-width="1.4" fill="none"/><rect x="8" y="'+(y-14)+'" width="88" height="28" rx="7" fill="#161F30" stroke="#2A3650"/><text x="52" y="'+(y+4)+'" text-anchor="middle" fill="#9AA6B8" font-family="Geist Mono,monospace" font-size="11">Chat '+(i+1)+' · '+ring[i][0]+'</text></g>';});
+    bkb.innerHTML='<div class="why"><svg viewBox="0 0 400 260" role="img" aria-label="Five chats connect to one device and one photo">'+nodes+
+      '<path d="M310 130h22" stroke="#FF7A6B" stroke-opacity=".55" stroke-width="1.4"/>'+
+      '<rect x="238" y="106" width="72" height="48" rx="10" fill="#2F1513" stroke="#FF7A6B"/><text x="274" y="126" text-anchor="middle" fill="#FF7A6B" font-family="Geist Mono,monospace" font-size="11">1 device</text><text x="274" y="142" text-anchor="middle" fill="#FF7A6B" font-family="Geist Mono,monospace" font-size="10">d9:3f</text>'+
+      '<image href="img/broken-mug.webp" x="334" y="100" width="60" height="60" preserveAspectRatio="xMidYMid slice"/><rect x="334" y="100" width="60" height="60" fill="none" stroke="#FF7A6B" rx="4"/><text x="364" y="176" text-anchor="middle" fill="#FF7A6B" font-family="Geist Mono,monospace" font-size="10">same photo ×5</text>'+
+      '</svg><ul><li><b>Same device</b> on 5 different accounts</li><li><b>Same photo</b> sent with every claim</li><li><b>5 claims in 2 minutes</b>, normal is under 1 a month</li></ul></div>';
+    return 4800;
+  }
+  // 6. the rule
+  function s6(){
+    bk.classList.add('on');$('bkt').textContent='Proposed rule';
+    wb.innerHTML='';msg('a','Hi! How can I help with your order today?');
+    bkb.innerHTML='<div class="rulec"><span class="t">Written by Baku’s investigator</span><p>Hold refunds when one device asks 3 or more times in 15 minutes.</p><div class="bt3"><div class="g"><b>11</b><span>fraud refunds caught, last 30 days</span></div><div class="g"><b>$1,842</b><span>would have been saved</span></div><div><b>0</b><span>real customers affected</span></div></div><div class="appr"><span>Edit</span><span class="go" id="go">Approve rule</span></div></div>';
+    at(1800,function(){var g=$('go');if(g){g.textContent='Live on your store ✓';g.classList.add('done');}});
+    at(2400,function(){bkb.appendChild(el('div','endcta','<span>Want to see what your agent would pay out?</span><a class="btn btn-p" href="#test">Get a free attack test</a>'));});
+    return 0;
+  }
+  // stepper
+  STEPS.forEach(function(st,i){var b=el('button','sn','<i><b></b></i><span>'+(i+1)+'. '+st.t+'</span>');b.type='button';b.setAttribute('role','tab');b.addEventListener('click',function(){auto=false;go(i);});sn.appendChild(b);});
+  function go(i){
+    if(i<0||i>=STEPS.length)return;cur=i;reset();
+    [].forEach.call(sn.children,function(b,k){b.classList.toggle('on',k===i);b.classList.toggle('done',k<i);b.setAttribute('aria-selected',k===i);var f=b.querySelector('i b');f.style.transition='none';f.style.width=k<i?'100%':'0';});
+    cap.innerHTML=STEPS[i].c;
+    $('prev').disabled=i===0;$('next').textContent=i===STEPS.length-1?'Replay':'Next';
+    var d=STEPS[i].run();
+    var f=sn.children[i].querySelector('i b');
+    if(auto&&d&&!reduce){void f.offsetWidth;f.style.transition='width '+d+'ms linear';f.style.width='100%';timers.push(setTimeout(function(){go(i+1);},d));}
+    else f.style.width='100%';
+  }
+  $('next').addEventListener('click',function(){auto=false;go(cur===STEPS.length-1?0:cur+1);});
+  $('prev').addEventListener('click',function(){auto=false;go(cur-1);});
+  var started=false;function start(){if(started)return;started=true;go(0);}
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){start();io.disconnect();}},{threshold:.3});io.observe($('demo'));}else start();
 })();
 </script>
 
