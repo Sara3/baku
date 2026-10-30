@@ -111,6 +111,66 @@ h1 span{color:var(--soft)}
 .acts span.go{background:var(--ice);border-color:var(--ice);color:var(--bg)}
 .note{font:11.5px var(--mono);color:var(--muted)}
 
+/* interactive demo */
+.demo{margin-top:64px;margin-bottom:-1px;border:1px solid var(--line-2);border-bottom:0;border-radius:16px 16px 0 0;background:linear-gradient(180deg,var(--panel),var(--bg-2));box-shadow:0 -20px 80px -30px rgba(142,197,255,.25);padding:16px;min-width:0}
+.dctl{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.dctl h3{font-weight:500;font-size:15px;letter-spacing:-.01em}
+.dctl h3 span{color:var(--muted);font-weight:400}
+.dctl .r{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.seg{display:inline-flex;padding:3px;border:1px solid var(--line-2);border-radius:10px;background:var(--bg-2)}
+.seg button{font:500 13px var(--sans);color:var(--soft);background:transparent;border:0;border-radius:7px;padding:8px 12px;cursor:pointer}
+.seg button.on{background:var(--panel-2);color:var(--fg);box-shadow:inset 0 0 0 1px var(--line-2)}
+.seg button[data-mode=on].on{color:var(--ice)}
+.run{padding:9px 14px;font-size:13px}
+.dgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:14px}
+@media (max-width:860px){.dgrid{grid-template-columns:1fr}}
+.pane{border:1px solid var(--line);border-radius:12px;background:var(--bg);overflow:hidden;min-width:0;display:flex;flex-direction:column}
+.ph{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);font:12px var(--mono);color:var(--muted);white-space:nowrap;overflow:hidden}
+.ph b{font-weight:500;color:var(--fg)}
+.ph .live{margin-left:auto}
+.chips{display:flex;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line);overflow-x:auto;min-height:47px}
+.chip{flex:none;font:11.5px var(--mono);color:var(--soft);border:1px solid var(--line-2);border-radius:999px;padding:5px 9px;display:flex;gap:6px;align-items:center}
+.chip i{width:6px;height:6px;border-radius:50%;background:var(--muted)}
+.chip.ring i{background:var(--bad)}
+.chip.cur{border-color:var(--soft);color:var(--fg)}
+.chat{flex:1;min-height:300px;padding:14px;display:flex;flex-direction:column;gap:10px;justify-content:flex-end;overflow:hidden}
+.b{max-width:84%;font-size:14px;line-height:1.45;padding:9px 12px;border-radius:12px;animation:bin .25s ease both}
+.b.u{align-self:flex-end;background:#1F2B40;color:var(--fg);border-bottom-right-radius:4px}
+.b.a{align-self:flex-start;background:var(--panel-2);color:var(--fg);border:1px solid var(--line);border-bottom-left-radius:4px}
+.b.a.ok b{color:var(--ok)}.b.a.no b{color:var(--warn)}.b.a.paid b{color:var(--bad)}
+.b small{display:block;font:11px var(--mono);color:var(--muted);margin-bottom:3px}
+.b.typing{color:var(--muted);letter-spacing:.2em}
+@keyframes bin{from{opacity:0;transform:translateY(6px)}}
+.feed{height:318px;padding:6px 12px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.fr{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:12px;align-items:center;padding:9px 2px;border-top:1px solid var(--line);font:12.5px var(--mono);animation:bin .3s ease both}
+.fr:first-child{border-top:0}
+.fr .w{min-width:0}
+.fr .w b{display:block;font-weight:400;color:var(--fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fr .w span{display:block;color:var(--muted);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fr .w span.hot{color:var(--bad)}
+.fr .amt{color:var(--fg);font-variant-numeric:tabular-nums}
+.fr .v{justify-self:start}
+.v.paid{background:#1E2838;color:var(--soft)}
+.tot{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.tot div{padding:12px 14px;display:grid;gap:4px}
+.tot div+div{border-left:1px solid var(--line)}
+.tot span{font:11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tot b{font-weight:500;font-size:24px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.tot .bad{color:var(--bad)}.tot .good{color:var(--ok)}
+.end{border-top:1px solid var(--line);padding:12px 14px;display:grid;gap:10px;min-height:118px;align-content:start}
+.end .code{font-size:12px;padding:10px;white-space:normal}
+.end .row2{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font:12px var(--mono);color:var(--soft)}
+.end .row2 b{font-weight:500;color:var(--ok)}
+.end p{font-size:14px;color:var(--soft)}
+.end p b{color:var(--bad);font-weight:500}
+.end .wait{font:12px var(--mono);color:var(--muted)}
+.story{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:14px;counter-reset:s}
+@media (max-width:860px){.story{grid-template-columns:1fr 1fr}}
+.story li{counter-increment:s;font-size:13px;color:var(--muted);border-top:2px solid var(--line);padding-top:10px;transition:color .3s,border-color .3s}
+.story li::before{content:"0" counter(s) "  ";font:12px var(--mono)}
+.story li.on{color:var(--fg);border-color:var(--ice)}
+.demo .note{margin-top:12px}
+
 /* sections */
 section.s{border-top:1px solid var(--line)}
 section.s .wrap{padding-block:96px}
@@ -174,40 +234,40 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
         <a class="btn btn-g" href="#how">How it works</a>
       </div>
 
-      <div class="shot" role="img" aria-label="Baku control plane, example data: a ring of refund chats from one device is blocked, and Baku proposes a rule to stop it next time.">
-        <div class="bar">
-          <span class="dots"><i></i><i></i><i></i></span>
-          <span class="tabs"><b class="on">Decisions</b><b>Fraud rules</b><b>Proposed rules<em>1</em></b><b>Rules</b></span>
-          <span class="live"><i></i>live · example data</span>
-        </div>
-        <div class="body">
-          <div class="dec">
-            <div class="dh"><span>Time</span><span>Session</span><span>Request</span><span style="text-align:right">Amount</span><span style="text-align:right">Decision</span></div>
-            <div class="row"><span class="t">14:02:07</span><span class="s">s_41c</span><span class="why">Refund · never shipped<small>carrier: lost</small></span><span class="amt">$64.00</span><b class="v ok">ALLOW</b></div>
-            <div class="row ring"><span class="t">14:02:11</span><span class="s">s_7e2</span><span class="why">Refund · arrived damaged<small class="dev">device d9:3f</small></span><span class="amt">$142.00</span><b class="v rev">REVIEW</b></div>
-            <div class="row ring"><span class="t">14:02:12</span><span class="s">s_7e5</span><span class="why">Refund · arrived damaged<small class="dev">device d9:3f</small></span><span class="amt">$138.00</span><b class="v no">BLOCK</b></div>
-            <div class="row ring"><span class="t">14:02:12</span><span class="s">s_7e9</span><span class="why">Refund · arrived damaged<small class="dev">device d9:3f</small></span><span class="amt">$151.00</span><b class="v no">BLOCK</b></div>
-            <div class="row ring"><span class="t">14:02:13</span><span class="s">s_7f0</span><span class="why">Credit · arrived damaged<small class="dev">device d9:3f</small></span><span class="amt">$120.00</span><b class="v no">BLOCK</b></div>
-            <div class="row"><span class="t">14:02:15</span><span class="s">s_80a</span><span class="why">Discount code · late delivery<small>new</small></span><span class="amt">15%</span><b class="v ok">ALLOW</b></div>
-          </div>
-          <aside class="side">
-            <div class="rule">
-              <div class="rule-h"><b>Proposed rule</b><span>by investigator</span></div>
-              <div class="code"><span class="k">when</span> refund_claims &gt;= <span class="n">3</span>
- <span class="k">and</span> same device_fingerprint
- <span class="k">within</span> <span class="n">15</span> min
-<span class="k">then</span> block</div>
-              <div class="bt">
-                <div><span>Backtest, last 30 days</span></div>
-                <div class="meter"><i></i></div>
-                <div><span>Ring sessions caught</span><b>5 / 5</b></div>
-                <div><span>Good customers blocked</span><b>0</b></div>
-              </div>
-              <div class="acts"><span>Reject</span><span class="go">Sync (enforce)</span></div>
+      <div class="demo" id="demo">
+        <div class="dctl">
+          <h3>Watch a refund attack <span>· simulated</span></h3>
+          <div class="r">
+            <div class="seg" role="group" aria-label="Protection">
+              <button type="button" data-mode="off" aria-pressed="false">Without Baku</button>
+              <button type="button" data-mode="on" class="on" aria-pressed="true">With Baku</button>
             </div>
-            <p class="note">Illustrative example. Not customer data.</p>
-          </aside>
+            <button type="button" class="btn btn-g run" id="run">Replay</button>
+          </div>
         </div>
+        <div class="dgrid">
+          <div class="pane">
+            <div class="ph"><span class="dots"><i></i><i></i><i></i></span><b>Your store</b><span>· AI support chat</span></div>
+            <div class="chips" id="chips" aria-label="Open chats"></div>
+            <div class="chat" id="chat" aria-live="polite"></div>
+          </div>
+          <div class="pane">
+            <div class="ph"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#161F30"/><path d="M5 12h14M12 5v14" stroke="#8EC5FF" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3.6" fill="#161F30" stroke="#8EC5FF" stroke-width="2"/></svg><b>Baku</b><span id="sub">· every payout, checked</span><span class="live"><i></i>live</span></div>
+            <div class="feed" id="feed"></div>
+            <div class="tot">
+              <div><span>Paid to fraud</span><b class="bad" id="lost">$0</b></div>
+              <div><span>Stopped by Baku</span><b class="good" id="saved">$0</b></div>
+            </div>
+            <div class="end" id="end"><span class="wait">Waiting for refund requests…</span></div>
+          </div>
+        </div>
+        <ol class="story" id="story">
+          <li>A real customer gets a refund</li>
+          <li>One person opens 5 chats claiming "damaged"</li>
+          <li>Baku links them to one device</li>
+          <li>Payouts stopped, new rule proposed</li>
+        </ol>
+        <p class="note">Simulated attack with example data. Not customer data.</p>
       </div>
     </div>
   </section>
@@ -295,7 +355,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
   </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 Baku</span><span>Product views show example data.</span></div></footer>
+<footer><div class="wrap"><span>© 2026 Baku</span><span>Demo uses simulated data.</span></div></footer>
 
 <script>
 (function(){
@@ -313,6 +373,57 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
     var b=this;
     try{navigator.clipboard.writeText(mail).then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy';},1500);},function(){});}catch(e){}
   });
+})();
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var chat=$('chat'),feed=$('feed'),chips=$('chips'),end=$('end'),lostEl=$('lost'),savedEl=$('saved'),story=$('story').children;
+  var mode='on',timers=[],lost=0,saved=0,started=false;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var legit={id:'Chat 1',dev:'a1:07',order:'#4821',ask:'My package never arrived. Order #4821.',amt:64,why:'never shipped · carrier confirms lost'};
+  var ring=[142,138,151,120,149].map(function(a,i){return {id:'Chat '+(i+2),dev:'d9:3f',order:'#59'+(31+i*7),amt:a};});
+  var ord=['1st','2nd','3rd','4th','5th'];
+  function money(n){return '$'+n.toLocaleString('en-US');}
+  function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
+  function at(ms,fn){timers.push(setTimeout(fn,reduce?0:ms));}
+  function clear(){timers.forEach(clearTimeout);timers=[];chat.innerHTML='';feed.innerHTML='';chips.innerHTML='';lost=0;saved=0;tot();end.innerHTML='<span class="wait">Waiting for refund requests…</span>';step(-1);}
+  function tot(){lostEl.textContent=money(lost);savedEl.textContent=money(saved);}
+  function step(n){for(var i=0;i<story.length;i++)story[i].classList.toggle('on',i<=n);}
+  function trim(box,max){while(box.children.length>max)box.removeChild(box.firstChild);}
+  function chip(c,isRing){[].forEach.call(chips.children,function(x){x.classList.remove('cur');});var k=el('span','chip cur'+(isRing?' ring':''),'<i></i>'+c.id+' · '+c.dev);chips.appendChild(k);k.scrollIntoView&&chips.scrollWidth>chips.clientWidth&&(chips.scrollLeft=chips.scrollWidth);}
+  function say(cls,html){var b=el('div','b '+cls,html);chat.appendChild(b);trim(chat,4);return b;}
+  function row(v,vc,title,sub,hot,amt){var r=el('div','fr','<b class="v '+vc+'">'+v+'</b><div class="w"><b>'+title+'</b><span'+(hot?' class="hot"':'')+'>'+sub+'</span></div><span class="amt">'+money(amt)+'</span>');feed.appendChild(r);trim(feed,6);}
+  function play(){
+    clear();var t=0,on=mode==='on';$('sub').textContent=on?'· every payout, checked':'· off: agent pays with no checks';
+    // 1. legit customer
+    at(t+=300,function(){step(0);chip(legit,false);chat.innerHTML='';say('u','<small>customer · device '+legit.dev+'</small>'+legit.ask);});
+    at(t+=900,function(){say('a typing','•••');});
+    at(t+=800,function(){chat.lastChild.remove();say('a ok','Sorry about that. The carrier marked it lost, so I’ve refunded <b>'+money(legit.amt)+'</b>.');row(on?'ALLOW':'PAID',on?'ok':'paid','Refund '+legit.order,on?legit.why:'no check',false,legit.amt);});
+    // 2. ring
+    ring.forEach(function(c,i){
+      at(t+=(i?1000:1200),function(){if(i===0)step(1);chip(c,true);chat.innerHTML='';say('u','<small>customer · device '+c.dev+'</small>Order '+c.order+' arrived damaged. I want a refund.');});
+      at(t+=550,function(){say('a typing','•••');});
+      at(t+=650,function(){
+        chat.lastChild.remove();
+        if(!on){lost+=c.amt;tot();say('a paid','So sorry! I’ve refunded <b>'+money(c.amt)+'</b> to your card.');row('PAID','paid','Refund '+c.order,'no check · paid out',false,c.amt);return;}
+        if(i===0){say('a no','I’ve sent this to a teammate to <b>review</b> before refunding.');row('REVIEW','rev','Refund '+c.order,'new device d9:3f · photo reused',true,c.amt);saved+=c.amt;tot();return;}
+        if(i===1)step(2);
+        saved+=c.amt;tot();
+        say('a no','I can’t issue this refund. <b>A teammate will follow up.</b>');
+        row('BLOCK','no','Refund '+c.order,ord[i]+' claim · same device d9:3f',true,c.amt);
+      });
+    });
+    at(t+=1200,function(){
+      step(3);
+      if(on){end.innerHTML='<div class="row2"><span style="color:var(--ice)">Proposed rule · by investigator</span><span>backtest 30 days: <b>5/5 caught · 0 good customers blocked</b></span></div><div class="code"><span class="k">when</span> refund_claims &gt;= <span class="n">3</span> <span class="k">and</span> same device <span class="k">within</span> <span class="n">15</span> min <span class="k">then</span> block</div>';}
+      else{end.innerHTML='<p><b>'+money(lost)+'</b> paid to one person in about 15 seconds. Your agent never saw that the 5 chats came from the same device.</p><p><a href="#" id="tryon" style="color:var(--ice)">Now run it with Baku →</a></p>';var a=$('tryon');a.addEventListener('click',function(e){e.preventDefault();setMode('on');play();});}
+    });
+  }
+  function setMode(m){mode=m;[].forEach.call(document.querySelectorAll('.seg button'),function(b){var o=b.getAttribute('data-mode')===m;b.classList.toggle('on',o);b.setAttribute('aria-pressed',o);});}
+  [].forEach.call(document.querySelectorAll('.seg button'),function(b){b.addEventListener('click',function(){setMode(b.getAttribute('data-mode'));play();});});
+  $('run').addEventListener('click',play);
+  function go(){if(started)return;started=true;play();}
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){go();io.disconnect();}},{threshold:.25});io.observe($('demo'));}else go();
+  setTimeout(go,2500);
 })();
 </script>
 
