@@ -13,4 +13,4 @@ The request form opens the visitor's email app with the request pre-filled. Cont
 
 ## Images
 `img/` holds Adobe Stock photos (Standard license, free collection) used in the demo's sample store.
-Asset IDs: living room / sofa 657390604, mug 1966069848, throw 1900874327, lamp 193681709, candle 644018958, torn fabric 688228179.
+Asset IDs: living room 657390604, mug 1966069848, vase 369197143, throw 1900874327, lamp 193681709, candle 644018958; damage photos: ceramic shards 476870871, cracked jar 828536236, cracked glaze 284820494, torn fabric 688228179.
