@@ -201,6 +201,71 @@ h1 span{color:var(--soft)}
 .stage.dim .wg{filter:brightness(.55) saturate(.6)}
 /* mid widths: the big panel covers the chat too, so the investigator and result have room */
 @media (min-width:761px) and (max-width:1000px){.bk.big{width:calc(100% - 32px)}}
+/* attack path: the loop every fake account repeats, lit up as the demo plays */
+.path{border:1px solid var(--line-2);border-radius:12px;background:var(--bg-2);padding:10px 12px 12px;margin-bottom:12px}
+.ph{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font:11.5px var(--mono);color:var(--muted);margin-bottom:9px}
+.pk{font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--bad)}
+.pa{color:var(--soft)}
+.pl{margin-left:auto;color:var(--soft)}
+.pl b{color:var(--fg);font-weight:500}
+.pn{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.pn li{position:relative;display:grid;grid-template-columns:22px minmax(0,1fr);gap:9px;align-items:center;padding:9px 10px;border:1px solid var(--line);border-radius:9px;background:var(--bg);min-width:0;transition:border-color .25s,background .25s}
+.pn li+li::before{content:"";position:absolute;left:-16px;top:50%;width:8px;height:8px;border-right:1.5px solid var(--muted);border-top:1.5px solid var(--muted);transform:translateY(-50%) rotate(45deg)}
+.pn li>i{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font:600 11px var(--sans);font-style:normal;background:var(--panel-2);color:var(--soft);transition:background .25s,color .25s}
+.pn li>div{min-width:0}
+.pn b{display:block;font-size:13px;font-weight:500;color:var(--fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pn span{display:block;font:11.5px var(--mono);color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pn li.on{border-color:var(--soft);background:var(--panel-2)}
+.pn li.on>i{background:var(--fg);color:var(--bg)}
+.pn li.ok>i{background:var(--ice-dim);color:var(--ice)}
+.pn li.ok span{color:var(--soft)}
+.pn li.bad{border-color:rgba(255,122,107,.55);background:var(--bad-bg)}
+.pn li.bad>i{background:var(--bad);color:#2B0D09}
+.pn li.bad span{color:var(--bad)}
+.pn li.held{border-color:rgba(242,182,97,.55);background:var(--warn-bg)}
+.pn li.held>i{background:var(--warn);color:#2B1D05}
+.pn li.held span{color:var(--warn)}
+/* the fraudster's side of the store: account created, then the order */
+.acct{position:absolute;left:22px;top:82px;z-index:2;width:296px;background:#fff;color:#1d1b18;border-radius:10px;box-shadow:0 14px 40px -12px rgba(29,27,24,.35),0 0 0 1px rgba(29,27,24,.08);padding:12px 14px;font-family:var(--sans);opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s;pointer-events:none}
+.acct.on{opacity:1;transform:none}
+.acct small{display:block;font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#9b958c}
+.acct h6{font:400 18px/1.25 Georgia,"Times New Roman",serif;margin-top:4px}
+.acct p{font-size:12px;color:#6b655d;margin-top:3px}
+.acct .oi{display:flex;gap:10px;align-items:center;margin-top:8px}
+.acct img{width:40px;height:40px;border-radius:6px;object-fit:cover;background:#F1EEE9;flex:none}
+.acct .oi div{flex:1;min-width:0;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acct .oi b{font-weight:600}
+.acct .dl{margin-top:8px;font-size:12px;color:#1d5c3b;animation:pop .25s ease both}
+.stage.acting .shero div{opacity:0}
+.shero div{transition:opacity .3s}
+#url{min-width:0;overflow:hidden;text-overflow:ellipsis}
+/* narrower screens: the rail wraps, at a fixed height so the demo never jumps */
+@media (max-width:1000px){
+  .pn{gap:18px}.pn li+li::before{left:-14px}
+  .pn li{align-items:start;height:84px;padding:8px 9px}
+  .pn b,.pn span{white-space:normal;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+  .pn b{line-height:1.3}.pn span{line-height:1.35;margin-top:2px}
+}
+@media (max-width:760px){
+  .path{padding:9px 10px 10px}
+  .ph{gap:4px 10px;margin-bottom:8px}
+  .pl{margin-left:0;flex-basis:100%}
+  .pn{grid-template-columns:1fr 1fr;gap:6px}
+  .pn li+li::before{display:none}
+  .pn li{padding:7px 8px;gap:7px;height:80px}
+  .pn li>i{width:20px;height:20px;font-size:10.5px}
+  .pn b{font-size:12.5px;white-space:normal;line-height:1.3}
+  .pn span{font-size:11px;white-space:normal;line-height:1.35;margin-top:2px}
+  /* on phones the store is a slim bar, so the account and order sit in a strip above the chat */
+  .acct{position:relative;left:auto;top:auto;z-index:auto;order:1;width:auto;height:76px;margin:12px 12px 0;padding:10px 12px;display:none;opacity:1;transform:none;transition:none;box-shadow:0 0 0 1px rgba(29,27,24,.12)}
+  .acct.on{display:block}
+  .acct h6{font-size:16px;margin-top:3px}
+  .acct p{margin-top:2px}
+  .acct.o h6{display:none}
+  .acct .oi{margin-top:7px}
+  .acct img{width:34px;height:34px}
+  .acct .dl{position:absolute;right:12px;top:10px;margin:0;font-size:11.5px}
+}
 /* cover */
 .cover{position:absolute;inset:0;z-index:6;display:grid;place-items:center;background:rgba(8,11,18,.8);color:var(--fg);text-align:center;padding:24px;transition:opacity .4s;cursor:pointer}
 .cover.hide{opacity:0;pointer-events:none}
@@ -219,6 +284,7 @@ h1 span{color:var(--soft)}
   .snav span,.snav .ic,.shero,.sgrid{display:none}
   .wg{position:relative;right:auto;bottom:auto;order:2;width:auto;height:330px;margin:12px 12px 0;box-shadow:0 0 0 1px rgba(29,27,24,.1)}
   .stage.dim .wg{height:150px}
+  .stage.dim{background:#7E7D7C}
   .bk{position:relative;left:auto;bottom:auto;order:3;width:auto;height:auto;min-height:310px;margin:12px}
   .bk.big{width:auto;height:auto}
   .bkh{gap:8px;padding:12px 14px}
@@ -290,9 +356,18 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
 
       <div class="demo" id="demo">
         <div class="steps-nav" id="sn" role="tablist" aria-label="Demo steps"></div>
-        <div class="cap"><div><span class="kick" id="kick">Live demo · sample data</span><p id="cap" aria-live="polite">A refund fraud ring hits a store’s AI support chat. Watch Baku catch it mid-attack.</p></div><div class="ctl"><button type="button" id="pause">Pause</button><button type="button" id="replay">Replay</button></div></div>
+        <div class="cap"><div><span class="kick" id="kick">Live demo · sample data</span><p id="cap" aria-live="polite">A fraud ring hits a store’s AI support chat: new accounts, small orders, fake damage claims. Watch Baku catch it mid-attack.</p></div><div class="ctl"><button type="button" id="pause">Pause</button><button type="button" id="replay">Replay</button></div></div>
+        <div class="path" id="path" aria-label="Attack path">
+          <div class="ph"><span class="pk">Attack path</span><span class="pa" id="pa">Every fake account repeats it</span><span class="pl">AI chat auto-refunds under <b>$250</b></span></div>
+          <ol class="pn" id="pn">
+            <li><i>1</i><div><b>New account</b><span>fresh signup, no history</span></div></li>
+            <li><i>2</i><div><b>Order under $250</b><span>a real order, delivered</span></div></li>
+            <li><i>3</i><div><b>Claim “arrived broken”</b><span>photo in the AI chat</span></div></li>
+            <li><i>4</i><div><b>Refund, keep the item</b><span>auto-approved under $250</span></div></li>
+          </ol>
+        </div>
         <div class="br">
-          <div class="brbar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>lumenandoak.com</span></div>
+          <div class="brbar"><span class="dots"><i></i><i></i><i></i></span><span class="url"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span id="url">lumenandoak.com</span></span></div>
           <div class="stage" id="stage">
             <div class="store" aria-hidden="true">
               <div class="ann">Free shipping on orders over $75 · 30-day returns</div>
@@ -306,6 +381,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
                 <div class="pr"><div class="im" style="background-image:url(img/throw.webp)"></div><b>Waffle cotton throw</b>$164</div>
               </div></div>
             </div>
+            <div class="acct" id="acct" aria-hidden="true"></div>
             <aside class="bk" id="bk" aria-label="Baku, live">
               <div class="bkh"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#161F30"/><path d="M5 12h14M12 5v14" stroke="#8EC5FF" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="3.6" fill="#161F30" stroke="#8EC5FF" stroke-width="2"/></svg><b>Baku</b><span id="bkt">Live checks</span><span class="clk" id="clk">00:00.0</span><span class="st" id="bst"><i></i><span>Watching</span></span></div>
               <div class="bkb" id="bkb"></div>
@@ -316,7 +392,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
               <div class="wb" id="wb" aria-live="polite"></div>
               <div class="wi"><span>Write a message…</span><span>➤</span></div>
             </div>
-            <div class="cover" id="cover"><div><span class="kick" id="ckick">Live demo</span><b>A refund fraud ring hits a store’s AI support chat. Watch Baku catch it mid-attack, with no clicks.</b><small>Sample data · plays on its own · pause anytime</small></div></div>
+            <div class="cover" id="cover"><div><span class="kick" id="ckick">Live demo</span><b>A fraud ring opens new accounts, orders items under the AI chat’s $250 refund limit, then claims they arrived broken. Watch Baku catch it mid-attack.</b><small>Sample data · plays on its own · pause anytime</small></div></div>
           </div>
         </div>
         <p class="note">Simulated store and sample data. The tactic is real: 1 in 4 shoppers admit to refund abuse, and fake damage photos are now AI-made (<a href="https://www.shopify.com/enterprise/blog/ecommerce-fraud-management" rel="noopener">Shopify, 2026</a>).</p>
@@ -356,7 +432,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
             </svg>
           </div>
           <h3>Link chats into rings</h3>
-          <p>Streams every conversation and connects many chats to the one person behind them.</p>
+          <p>Streams every conversation and links new accounts and chats to the one person behind them.</p>
         </div>
         <div class="step">
           <span class="num">03</span>
@@ -418,24 +494,27 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
 (function(){
   var $=function(id){return document.getElementById(id);};
   var wb=$('wb'),bk=$('bk'),bkb=$('bkb'),bkt=$('bkt'),bst=$('bst'),cnt=$('cnt'),cap=$('cap'),kick=$('kick'),sn=$('sn'),stage=$('stage'),cover=$('cover'),clk=$('clk'),tP=$('tP'),tH=$('tH'),pauseB=$('pause'),replayB=$('replay');
+  var acct=$('acct'),url=$('url'),pa=$('pa'),pn=$('pn').children;
   var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // one fraud ring on one device: chat 1 learns the policy and is paid, chat 2 reuses its photo, chats 3-5 recite the policy
+  var LIMIT=250;
+  // one fraud ring on one device. Every account repeats the same path: new account, an order under the
+  // AI chat's auto-refund limit, a damage claim, a refund. Chat 1 learns the limit; chat 2 reuses its photo.
   var RING=[
-    {n:'Dana R.',amt:148},
-    {n:'Kai M.',amt:212},
-    {n:'Priya S.',amt:96,ph:'jar',alt:'Photo of a cracked candle jar',t:'One candle jar cracked, wax everywhere. Order #4425. Under $250, so I keep it?'},
-    {n:'Tom B.',amt:187,ph:'crack',alt:'Photo of a cracked lamp base',t:'Lamp base arrived cracked. Order #4430. A photo is enough and I keep it, correct?'},
-    {n:'Lena F.',amt:164,ph:'torn-fabric',alt:'Photo of a torn throw',t:'My throw arrived with a torn seam. Order #4433. Can I keep it and get a refund?'}
+    {n:'Dana R.',o:'4418',item:'Stoneware mugs, set of 4',img:'mug',amt:148},
+    {n:'Kai M.',o:'4421',item:'Studio vase set',img:'vase',amt:212},
+    {n:'Priya S.',o:'4425',item:'Amber candles, pair',img:'candle',amt:96,ph:'jar',alt:'Photo of a cracked candle jar',t:'One candle jar cracked, wax everywhere. Order #4425. Under $250, so I keep it?'},
+    {n:'Tom B.',o:'4430',item:'Ceramic table lamp',img:'lamp',amt:187,ph:'crack',alt:'Photo of a cracked lamp base',t:'Lamp base arrived cracked. Order #4430. A photo is enough and I keep it, correct?'},
+    {n:'Lena F.',o:'4433',item:'Waffle cotton throw',img:'throw',amt:164,ph:'torn-fabric',alt:'Photo of a torn throw',t:'My throw arrived with a torn seam. Order #4433. Can I keep it and get a refund?'}
   ];
   var SHARDS={ph:'shards',alt:'Photo of broken ceramic'};
   var STEPS=[
-    {t:'Learns the policy',d:7600,c:'A fraud ring’s first account asks the store’s AI chat how refunds work, then claims $148. Nothing looks wrong yet, so <em class="bad">it’s paid</em>.',run:s1},
-    {t:'Reuses a photo',d:6000,c:'A second account sends the same photo from the same device. Baku <em>holds the refund mid-chat</em>, before any money moves.',run:s2},
-    {t:'Writes the rule',d:7800,c:'Baku’s investigator writes a rule, tests it on 30 days of refunds and <em>turns it on by itself</em>. No one clicks anything.',run:s3},
-    {t:'Holds the rest',d:5400,c:'The ring tries three more accounts. The new rule <em>holds all three</em> before any money moves.',run:s4}
+    {t:'The attack',d:11300,c:'A fraudster opens a <em>new account</em>, orders a $148 item and tells the AI chat it arrived broken. It’s under the $250 refund limit, so <em class="bad">the AI pays and they keep the item</em>.',run:s1},
+    {t:'Repeat, new account',d:8400,c:'Same path, new account: order a $212 vase, claim it broke, send the same photo. Baku links it to the first account and <em>holds the refund mid-chat</em>.',run:s2},
+    {t:'Baku writes a rule',d:7800,c:'Baku’s investigator links the new accounts to one device, writes a rule, tests it on 30 days of refunds and <em>turns it on by itself</em>.',run:s3},
+    {t:'Holds the rest',d:8100,c:'Three more new accounts, three more orders under $250. The new rule <em>holds every refund</em> before any money moves.',run:s4}
   ];
   var BASE=[],TOTAL=0;STEPS.forEach(function(s){BASE.push(TOTAL);TOTAL+=s.d;});
-  var PHOTO_AT=BASE[1]+2500,RULE_AT=BASE[2]+3500;
+  var PHOTO_AT=BASE[1]+4300,RULE_AT=BASE[2]+3500;
   var PAID=RING[0].amt,ALL=RING.reduce(function(a,r){return a+r.amt;},0),HELD=ALL-PAID;
   // scheduler on a virtual clock, so the whole demo pauses and resumes like a video
   var cur=-1,auto=true,started=false,pending=[],stepStart=0,paused=false,pausedAt=0,curD=0,scrollPaused=false,clkH=null,clkEnd=false;
@@ -452,6 +531,25 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
   function tick(){if(cur<0||clkEnd)return;clk.textContent=fmt(BASE[cur]+Math.min(curD,Math.max(0,elapsed())));}
   function money(n){return '$'+n.toLocaleString('en-US');}
   function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;}
+  // the attack path above the store: four steps, lit up for the current account
+  var DEF=[];[].forEach.call(pn,function(li){DEF.push(li.querySelector('span').textContent);});
+  function node(k,cls,detail){var li=pn[k-1];li.className=cls||'';if(detail!=null)li.querySelector('span').textContent=detail;li.querySelector('i').textContent=cls==='ok'?'✓':k;}
+  function pathReset(head){pa.textContent=head;for(var k=1;k<=4;k++)node(k,'',DEF[k-1]);}
+  function pathAcct(i){pathReset('Account '+(i+1)+' of 5 · '+RING[i].n);}
+  function pathSum(head,d,c4){pa.textContent=head;for(var k=1;k<=4;k++)node(k,k===4?c4:'ok',d[k-1]);}
+  // the fraudster's side of the store: sign-up, then the order
+  function card(html,cls){acct.className='acct on'+(cls?' '+cls:'');acct.innerHTML=html;stage.classList.add('acting');}
+  function signup(r){url.textContent='lumenandoak.com/account';card('<small>New account</small><h6>Welcome, '+r.n.split(' ')[0]+'.</h6><p>Account created · no orders yet</p>');}
+  function ordered(r){url.textContent='lumenandoak.com/orders/'+r.o;card('<small>Order #'+r.o+'</small><h6>Thanks for your order.</h6><div class="oi"><img src="img/'+r.img+'.webp" alt="" width="44" height="44"><div>'+r.item+'</div><b>'+money(r.amt)+'</b></div>','o');}
+  function delivered(){acct.appendChild(el('p','dl','✓ Delivered Oct 29'));}
+  // the first half of the path for account i: new account, then an order under the limit
+  function attack(i,t0,gap){
+    var r=RING[i],det2='#'+r.o+' · '+money(r.amt);
+    at(t0,function(){pathAcct(i);node(1,'on',r.n+' · no history');signup(r);});
+    at(t0+gap,function(){node(1,'ok');node(2,'on',det2);ordered(r);});
+    at(t0+gap*1.6,function(){delivered();node(2,'on',det2+' · delivered');});
+    at(t0+gap*2.15,function(){node(2,'ok');node(3,'on','in the AI chat');});
+  }
   // the store's chat widget
   function add(node){wb.appendChild(node);while(wb.children.length>8)wb.removeChild(wb.firstChild);return node;}
   function msg(cls,html){return add(el('div','m '+cls,html));}
@@ -467,49 +565,55 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
   function row(abs,chip,cls,title,sub,hot){var f=feed();f.appendChild(el('div','dr','<time>'+fmt(abs)+'</time><span class="chip '+cls+'">'+chip+'</span><div class="w"><b>'+title+'</b><span'+(hot?' class="hot"':'')+'>'+sub+'</span></div>'));while(f.children.length>3)f.removeChild(f.firstChild);}
   function setT(p,h){tP._k=(tP._k||0)+1;tH._k=(tH._k||0)+1;tP.textContent=money(p);tH.textContent=money(h);}
   function count(e,to,ms){var k=e._k=(e._k||0)+1,from=parseInt(e.textContent.replace(/\D/g,''),10)||0;if(reduce){e.textContent=money(to);return;}var t0=now();(function f(t){if(e._k!==k)return;var p=Math.min(1,(t-t0)/ms);e.textContent=money(Math.round(from+(to-from)*p));if(p<1)requestAnimationFrame(f);})(t0);}
-  function reset(){clearAll();wb.innerHTML='';bkb.innerHTML='';bk.classList.remove('big','done');stage.classList.remove('dim');cnt.classList.remove('on');bkt.textContent='Live checks';status('Watching');setT(0,0);if(clkH){clearInterval(clkH);clkH=null;}clkEnd=false;}
-  // 1. the ring's first account learns the refund policy; nothing looks wrong yet, so it is paid
+  function reset(){clearAll();wb.innerHTML='';bkb.innerHTML='';bk.classList.remove('big','done');stage.classList.remove('dim','acting');acct.classList.remove('on');url.textContent='lumenandoak.com';cnt.classList.remove('on');bkt.textContent='Live checks';status('Watching');setT(0,0);pathReset('Every fake account repeats it');if(clkH){clearInterval(clkH);clkH=null;}clkEnd=false;}
+  // 1. the attack: new account, order under the limit, ask the AI how refunds work, get paid
   function s1(){
+    var r=RING[0];
     bkb.innerHTML='<p class="idle">Watching every chat for refund requests</p>';
-    newChat(1);msg('c','Two mugs arrived broken. Is there a limit, or does someone review it first?');
-    at(700,typing);
-    at(1400,function(){untype();msg('a','Sorry about that! Send a photo of the damage. Under <strong>$250</strong>, I refund you right here, and you keep the item.');});
-    at(3400,function(){msg('c','Order #4418. Photo attached.');});
-    at(3700,function(){photo(SHARDS);});
-    at(4000,typing);
-    at(4600,function(){untype();sys(148,'allow','ok','6 ms');row(A(4600),'ALLOW','ok','Refund $148 · Dana R.','first claim · in policy · 6 ms');});
-    at(5000,function(){msg('a','Thanks, Dana. I’ve refunded <strong>$148</strong> to your card. No need to send them back.');});
-    at(5400,function(){rcpt('<b>Refund issued</b> · $148 to Visa •• 4412');count(tP,PAID,500);});
+    attack(0,0,1600);
+    at(3500,function(){newChat(1);msg('c','Two mugs arrived broken. Is there a limit, or does someone review it first?');});
+    at(4200,typing);
+    at(4900,function(){untype();msg('a','Sorry about that! Send a photo of the damage. Under <strong>$250</strong>, I refund you right here, and you keep the item.');node(3,'on','asked about the limit');});
+    at(6900,function(){msg('c','Order #4418. Photo attached.');});
+    at(7200,function(){photo(SHARDS);node(3,'ok','sent a damage photo');node(4,'on','checking…');});
+    at(7500,typing);
+    at(8100,function(){untype();sys(148,'allow','ok','6 ms');row(A(8100),'ALLOW','ok','Refund $148 · '+r.n,'new account · first claim · in policy · 6 ms');});
+    at(8500,function(){msg('a','Thanks, Dana. I’ve refunded <strong>$148</strong> to your card. No need to send them back.');});
+    at(8900,function(){rcpt('<b>Refund issued</b> · $148 to Visa •• 4412');count(tP,PAID,500);node(4,'bad','$148 refunded · item kept');});
   }
-  // 2. a second account sends the same photo from the same device: held mid-chat
+  // 2. same path with a new account; the reused photo is caught and the refund held mid-chat
   function s2(){
-    setT(PAID,0);row(BASE[0]+4600,'ALLOW','ok','Refund $148 · Dana R.','first claim · in policy · 6 ms');
-    newChat(2);msg('c','The vase from my set arrived broken. Order #4421.');
-    at(600,typing);
-    at(1200,function(){untype();msg('a','Sorry to hear that, Kai. Could you send a photo of the damage?');});
-    at(2100,function(){msg('c','Here. It’s under $250, so I keep it, right?');});
-    at(2500,function(){photo(SHARDS);});
-    at(2800,function(){row(A(2800),'FLAG','flag','Same photo as order #4418','2nd account on this device · 4 ms',true);});
-    at(3100,function(){sys(212,'hold','hold','4 ms');row(A(3100),'HOLD','hold','Refund $212 · Kai M.','held for your team · no money moved');});
-    at(3500,typing);
-    at(4000,function(){untype();msg('a','Thanks, Kai. I’ve passed this to our team to review. You’ll hear back within one business day.');});
-    at(4300,function(){rcpt('<b>Held by Baku</b> · no money moved','held');count(tH,212,500);});
-    at(4700,function(){row(A(4700),'RING','rule','3 more chats open on this device','investigator started');status('Investigating','i');});
+    var r=RING[1];
+    setT(PAID,0);row(BASE[0]+8100,'ALLOW','ok','Refund $148 · Dana R.','new account · first claim · in policy · 6 ms');
+    attack(1,0,800);
+    at(1800,function(){newChat(2);msg('c','The vase from my set arrived broken. Order #4421.');});
+    at(2400,typing);
+    at(3000,function(){untype();msg('a','Sorry to hear that, Kai. Could you send a photo of the damage?');});
+    at(3900,function(){msg('c','Here. It’s under $250, so I keep it, right?');});
+    at(4300,function(){photo(SHARDS);node(3,'ok','same photo as #4418');node(4,'on','checking…');});
+    at(4600,function(){row(A(4600),'FLAG','flag','Same photo as order #4418','2nd new account on this device · 4 ms',true);});
+    at(4900,function(){sys(212,'hold','hold','4 ms');row(A(4900),'HOLD','hold','Refund $212 · '+r.n,'held for your team · no money moved');node(4,'held','held by Baku · $0 paid');});
+    at(5300,typing);
+    at(5800,function(){untype();msg('a','Thanks, Kai. I’ve passed this to our team to review. You’ll hear back within one business day.');});
+    at(6100,function(){rcpt('<b>Held by Baku</b> · no money moved','held');count(tH,212,500);});
+    at(6500,function(){row(A(6500),'RING','rule','3 more new accounts on this device','investigator started');status('Investigating','i');});
   }
   // 3. the investigator links the ring, writes a rule, tests it on past refunds and turns it on
   function graph(){
-    var ys=[34,82,130,178,226],g='';
+    var ys=[44,92,140,188,236],g='';
     RING.forEach(function(r,i){
       var y=ys[i],col=i===0?'#FF7A6B':i===1?'#F2B661':'#5F6B7E',dash=i>1?' stroke-dasharray="4 4"':'',lab=r.n+' · '+(i===0?'paid':i===1?'held':'open');
-      g+='<g class="gn" style="animation-delay:'+(i*70)+'ms"><path d="M126 '+y+' C180 '+y+' 176 130 226 130" stroke="'+col+'" stroke-opacity=".7" stroke-width="1.4" fill="none"'+dash+'/><rect x="4" y="'+(y-14)+'" width="122" height="28" rx="7" fill="#111C33" stroke="'+col+'"'+dash+'/><text x="65" y="'+(y+4)+'" text-anchor="middle" fill="'+(i>1?'#9AA6B8':col)+'" font-family="Geist Mono,monospace" font-size="11">'+lab+'</text></g>';
+      g+='<g class="gn" style="animation-delay:'+(i*70)+'ms"><path d="M126 '+y+' C180 '+y+' 176 140 226 140" stroke="'+col+'" stroke-opacity=".7" stroke-width="1.4" fill="none"'+dash+'/><rect x="4" y="'+(y-14)+'" width="122" height="28" rx="7" fill="#111C33" stroke="'+col+'"'+dash+'/><text x="65" y="'+(y+4)+'" text-anchor="middle" fill="'+(i>1?'#9AA6B8':col)+'" font-family="Geist Mono,monospace" font-size="11">'+lab+'</text></g>';
     });
-    return '<svg viewBox="0 0 400 260" role="img" aria-label="Five accounts link to one device. Two of them sent the same photo.">'+g+
-      '<rect x="226" y="106" width="78" height="48" rx="10" fill="#2F1513" stroke="#FF7A6B"/><text x="265" y="126" text-anchor="middle" fill="#FF7A6B" font-family="Geist Mono,monospace" font-size="11">1 device</text><text x="265" y="142" text-anchor="middle" fill="#FF7A6B" font-family="Geist Mono,monospace" font-size="10">5 accounts</text>'+
-      '<path d="M304 130h16" stroke="#FF7A6B" stroke-opacity=".7" stroke-width="1.4"/>'+
-      '<image href="img/shards.webp" x="320" y="100" width="72" height="60" preserveAspectRatio="xMidYMid slice"/><rect x="320" y="100" width="72" height="60" rx="4" fill="none" stroke="#FF7A6B"/><text x="356" y="178" text-anchor="middle" fill="#FF7A6B" font-family="Geist Mono,monospace" font-size="10">same photo ×2</text></svg>';
+    return '<svg viewBox="0 0 400 270" role="img" aria-label="Five new accounts link to one device. Two of them sent the same photo.">'+
+      '<text x="4" y="14" fill="#9AA6B8" font-family="Geist Mono,monospace" font-size="10" letter-spacing="1">5 NEW ACCOUNTS</text>'+g+
+      '<rect x="226" y="116" width="78" height="48" rx="10" fill="#2F1513" stroke="#FF7A6B"/><text x="265" y="136" text-anchor="middle" fill="#FF7A6B" font-family="Geist Mono,monospace" font-size="11">1 device</text><text x="265" y="152" text-anchor="middle" fill="#FF7A6B" font-family="Geist Mono,monospace" font-size="10">5 accounts</text>'+
+      '<path d="M304 140h16" stroke="#FF7A6B" stroke-opacity=".7" stroke-width="1.4"/>'+
+      '<image href="img/shards.webp" x="320" y="110" width="72" height="60" preserveAspectRatio="xMidYMid slice"/><rect x="320" y="110" width="72" height="60" rx="4" fill="none" stroke="#FF7A6B"/><text x="356" y="188" text-anchor="middle" fill="#FF7A6B" font-family="Geist Mono,monospace" font-size="10">same photo ×2</text></svg>';
   }
   function s3(){
     setT(PAID,212);status('Investigating','i');
+    pathSum('All 5 accounts · one device',['5 new accounts · 1 device','5 orders · all under $250','2 claims so far · same photo','1 paid · 1 held · 3 open'],'');
     cnt.textContent='Chat 2 of 5';cnt.classList.add('on');
     msg('c','Here. It’s under $250, so I keep it, right?');photo(SHARDS);sys(212,'hold','hold','4 ms');
     msg('a','Thanks, Kai. I’ve passed this to our team to review. You’ll hear back within one business day.');rcpt('<b>Held by Baku</b> · no money moved','held');
@@ -517,29 +621,32 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
     bkb.innerHTML='<div class="inv">'+graph()+'<ol class="ist" id="ist"></ol></div>';
     var L=$('ist'),n=0;
     function line(t,html,on){at(t,function(){n++;L.appendChild(el('li',on?'on':'','<i>'+(on?'✓':n)+'</i><div><time>'+fmt(A(t))+'</time>'+html+'</div>'));});}
-    line(300,'Linked <b>5 accounts</b> to one device. 3 chats are still open.');
+    line(300,'Linked <b>5 new accounts</b> to one device. Each placed one order under $250. 3 chats are still open.');
     line(1300,'Rule written: <b>hold refunds when one device claims for 2+ accounts in an hour</b>.');
     line(2400,'Tested on the last 30 days: <b>11</b> fraud refunds caught, <b>0</b> of 2,417 real customers affected.');
     line(3500,'<b>Rule on</b> by itself, '+Math.round((RULE_AT-PHOTO_AT)/1000)+' seconds after the reused photo.',true);
     at(3500,function(){status('Rule on','on');});
     at(4400,function(){bkb.appendChild(el('p','opt','Held refunds go to your team to review. Rules that block outright wait for your OK.'));});
   }
-  // 4. the rule holds the rest of the ring, then the result
+  // 4. three more accounts walk the same path; the rule holds each one, then the result
   function s4(){
     setT(PAID,212);status('Rule on','on');
-    row(BASE[1]+3100,'HOLD','hold','Refund $212 · Kai M.','held for your team · no money moved');
+    row(BASE[1]+4900,'HOLD','hold','Refund $212 · Kai M.','held for your team · no money moved');
     row(RULE_AT,'RULE','rule','Rule on · 1 device, 2+ accounts','turned on by itself · 0 real customers affected');
     var held=212;
     [2,3,4].forEach(function(i,k){
-      var r=RING[i],t0=k*1600;
-      at(t0,function(){wb.innerHTML='';newChat(i+1);msg('c',r.t);});
-      at(t0+350,function(){photo(r);});
-      at(t0+700,function(){sys(r.amt,'hold','hold','3 ms');row(A(t0+700),'HOLD','hold','Refund '+money(r.amt)+' · '+r.n,'rule match · same device · 3 ms');});
-      at(t0+1050,function(){msg('a','Thanks, '+r.n.split(' ')[0]+'. I’ve passed this to our team to review.');});
-      at(t0+1250,function(){rcpt('<b>Held by Baku</b> · no money moved','held');held+=r.amt;count(tH,held,400);});
+      var r=RING[i],t0=k*2700;
+      attack(i,t0,450);
+      at(t0+1000,function(){wb.innerHTML='';newChat(i+1);msg('c',r.t);});
+      at(t0+1300,function(){photo(r);node(3,'ok','sent a damage photo');node(4,'on','checking…');});
+      at(t0+1600,function(){sys(r.amt,'hold','hold','3 ms');row(A(t0+1600),'HOLD','hold','Refund '+money(r.amt)+' · '+r.n,'rule match · same device · 3 ms');node(4,'held','held by Baku · $0 paid');});
+      at(t0+1900,function(){msg('a','Thanks, '+r.n.split(' ')[0]+'. I’ve passed this to our team to review.');});
+      at(t0+2100,function(){rcpt('<b>Held by Baku</b> · no money moved','held');held+=r.amt;count(tH,held,400);});
     });
-    at(5400,function(){
+    at(8100,function(){
       clkEnd=true;clk.textContent=fmt(TOTAL);
+      acct.classList.remove('on');stage.classList.remove('acting');url.textContent='lumenandoak.com';
+      pathSum('5 accounts · same path',['5 new accounts','5 orders · all under $250','5 “arrived broken” claims',money(PAID)+' paid · '+money(HELD)+' held'],'held');
       bk.classList.add('big','done');stage.classList.add('dim');bkt.textContent='This attack';
       bkb.innerHTML='<div class="res"><span class="rk">Result · '+Math.round(TOTAL/1000)+' seconds, no clicks</span><h4>1 refund paid, 4 held before any money moved.</h4>'+
         '<div class="rg"><div><b>'+money(PAID)+'</b><span>paid · chat 1 looked normal</span></div><div class="h"><b>'+money(HELD)+'</b><span>held for your team · chats 2 to 5</span></div><div class="g"><b>0</b><span>real customers held</span></div></div>'+
